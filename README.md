@@ -45,6 +45,7 @@ implementation "com.github.wenkency:base:1.0.0"
 
 ### 使用方式
 
+```
 @Route(path = "/b/videos")
 public class TestActivity extends AppActivity {
     // 阿里路由注入
@@ -76,6 +77,8 @@ public class TestActivity extends AppActivity {
         showLoading();
     }
 }
+
+```
 
 ### 运行结果
 
