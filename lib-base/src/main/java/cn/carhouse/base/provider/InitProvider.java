@@ -16,12 +16,14 @@
 package cn.carhouse.base.provider;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.app.Application;
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 
 import cn.carhouse.base.utils.UIUtils;
 
@@ -41,6 +43,9 @@ public class InitProvider extends ContentProvider {
             application = getApplicationByReflect();
         }
         UIUtils.init(application);
+        if (application instanceof Application) {
+            ARouter.init((Application) application);
+        }
         return true;
     }
 

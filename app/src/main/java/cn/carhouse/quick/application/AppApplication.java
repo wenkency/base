@@ -11,7 +11,6 @@ public class AppApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ARouter.init(this);
         // 测试用，实际用自己开发的页面
         AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
         AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
