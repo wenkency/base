@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-/*butterknife*/
-apply plugin: 'com.jakewharton.butterknife'
 // 阿里的ARouter
 apply plugin: 'com.alibaba.arouter'
 
@@ -35,7 +33,6 @@ android {
         }
     }
 
-    /*butterknife*/
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -48,8 +45,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // 阿里ARouter
     annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
-    // butterknife
-    annotationProcessor "com.jakewharton:butterknife-compiler:${versions.butterknifeComplier}"
     // 图片加载
     implementation 'com.github.wenkency:imageloader:1.1.0'
 }

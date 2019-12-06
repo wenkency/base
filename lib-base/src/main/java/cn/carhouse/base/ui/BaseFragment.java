@@ -15,8 +15,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.carhouse.base.utils.KeyBordUtils;
 
 /**
@@ -33,7 +31,6 @@ import cn.carhouse.base.utils.KeyBordUtils;
 public abstract class BaseFragment extends Fragment {
     private Activity mActivity;
     protected View mContentView;
-    private Unbinder mUnbinder;
 
     private boolean isInit;
 
@@ -146,20 +143,13 @@ public abstract class BaseFragment extends Fragment {
         if (isNeedEvent()) {
             EventBus.getDefault().register(this);
         }
-        if (isNeedBind()) {
-            mUnbinder = ButterKnife.bind(this, view);
-        }
+
     }
 
     protected void unbindView() {
         // 事件
         if (isNeedEvent()) {
             EventBus.getDefault().unregister(this);
-        }
-        // 绑定View
-        if (isNeedBind() && mUnbinder != null) {
-            mUnbinder.unbind();
-            mUnbinder = null;
         }
         mContentView = null;
     }

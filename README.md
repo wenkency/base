@@ -51,8 +51,6 @@ public class TestActivity extends AppActivity {
     // 阿里路由注入
     @Autowired
     String path;
-    // ButterKnife注入
-    @BindView(R.id.tv)
     TextView tv;
 
 
@@ -69,6 +67,7 @@ public class TestActivity extends AppActivity {
     @Override
     protected void initViews(View view) {
         ARouter.getInstance().inject(this);
+        tv = findViewById(R.id.tv);
         tv.setText(path);
     }
 
