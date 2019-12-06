@@ -36,7 +36,7 @@ android {
 }
 
 
-implementation "com.github.wenkency:base:1.0.0"
+implementation "com.github.wenkency:base:1.1.0"
 // 阿里ARouter
 annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
 
