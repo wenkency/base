@@ -43,7 +43,7 @@ public class TSUtils {
         UIUtils.runInMainThread(new Runnable() {
             @Override
             public void run() {
-                getToast(UIUtils.getmContext(), text, Toast.LENGTH_SHORT).show();
+                getToast(UIUtils.getContext(), text, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -55,7 +55,7 @@ public class TSUtils {
         UIUtils.runInMainThread(new Runnable() {
             @Override
             public void run() {
-                getToast(UIUtils.getmContext(), text, Toast.LENGTH_SHORT).show();
+                getToast(UIUtils.getContext(), text, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -65,7 +65,7 @@ public class TSUtils {
         UIUtils.runInMainThread(new Runnable() {
             @Override
             public void run() {
-                getToast(UIUtils.getmContext(), text, duration).show();
+                getToast(UIUtils.getContext(), text, duration).show();
             }
         });
     }

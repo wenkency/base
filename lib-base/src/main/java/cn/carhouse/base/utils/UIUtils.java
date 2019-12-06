@@ -32,7 +32,7 @@ public class UIUtils {
      *
      * @return
      */
-    public static Context getmContext() {
+    public static Context getContext() {
         return mContext.getApplicationContext();
     }
 
@@ -76,7 +76,7 @@ public class UIUtils {
      * @return
      */
     public static Resources getResources() {
-        return getmContext().getResources();
+        return getContext().getResources();
     }
 
     /**
@@ -200,7 +200,7 @@ public class UIUtils {
     }
 
     public static int getIdentifier(String name, String defType) {
-        int resId = getResources().getIdentifier(name, defType, getmContext().getPackageName());
+        int resId = getResources().getIdentifier(name, defType, getContext().getPackageName());
         return resId;
     }
 

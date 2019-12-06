@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 
 import cn.carhouse.base.ui.AppActivity;
+import cn.carhouse.base.utils.TSUtils;
+import cn.carhouse.base.utils.UIUtils;
 import cn.carhouse.imageloader.ImageLoaderFactory;
 import cn.carhouse.titlebar.DefTitleBar;
 
@@ -41,6 +43,8 @@ public class MainActivity extends AppActivity {
     }
 
     public void ivClick(View view) {
+        TSUtils.show("aaa" + (UIUtils.getContext() == null));
+
         String url = "carhouse://news/b/videos?path=https://img.car-house.cn/media/product/1001/20170821/20170821100649189.mp4";
         Uri uri = Uri.parse(url);
         ARouter.getInstance()
