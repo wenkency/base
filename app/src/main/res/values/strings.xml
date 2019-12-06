@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QuickProject</string>
+    <string name="app_config">
+        在Application调用AppConfig设置加载页面\n
+        加载页面：setLoadingLayoutId \n
+        重试页面：setRetryLayoutId  \n
+        数据错误：setDataErrorLayoutId \n
+        空的页面：setEmptyLayoutId \n
+    </string>
+</resources>

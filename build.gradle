@@ -1,0 +1,50 @@
+// 导入配置文件
+apply from: 'config.gradle'
+
+buildscript {
+    ext.kotlin_version = '1.3.41'
+    // 阿里的ARouter
+    ext.arouterRegister = '1.0.2'
+
+    repositories {
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            url 'http://dl.bintray.com/jetbrains/intellij-plugin-service'
+        }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // 代码发布到远程仓库 https://jitpack.io/
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        // butter knife 注入
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.0'
+        // 阿里的ARouter
+        classpath "com.alibaba:arouter-register:$arouterRegister"
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://jitpack.io' }
+        maven {
+            url 'http://dl.bintray.com/dev-fingerlinks/maven'
+        }
+
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
