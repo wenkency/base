@@ -12,8 +12,6 @@ allprojects {
 		}
 	}
 
-// ButterKnife 运行时编译工具
-apply plugin: 'com.jakewharton.butterknife'
 // 阿里的ARouter 运行时编译工具
 apply plugin: 'com.alibaba.arouter'
 
@@ -30,7 +28,7 @@ android {
 
     }
     ...
-    // ButterKnife配置
+    // 解编配置
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,7 +37,8 @@ android {
 
 
 implementation "com.github.wenkency:base:1.0.0"
-
+// 阿里ARouter
+annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
 
 ```
 
