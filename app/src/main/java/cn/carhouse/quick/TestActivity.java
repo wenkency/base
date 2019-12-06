@@ -7,13 +7,17 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import butterknife.BindView;
 import cn.carhouse.base.ui.AppActivity;
 import cn.carhouse.titlebar.DefTitleBar;
 
 @Route(path = "/b/videos")
 public class TestActivity extends AppActivity {
+    // 阿里路由注入
     @Autowired
     String path;
+    // ButterKnife注入
+    @BindView(R.id.tv)
     TextView tv;
 
 
@@ -30,7 +34,6 @@ public class TestActivity extends AppActivity {
     @Override
     protected void initViews(View view) {
         ARouter.getInstance().inject(this);
-        tv = findViewById(R.id.tv);
         tv.setText(path);
     }
 
