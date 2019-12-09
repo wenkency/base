@@ -1,4 +1,9 @@
 apply plugin: 'com.android.library'
+
+// 远程仓库
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.wenkency'
+
 // 声明及引用
 def app = rootProject.ext.app
 def depsLibs = rootProject.ext.depsLibs
