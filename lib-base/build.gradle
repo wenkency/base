@@ -4,18 +4,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.wenkency'
 
-// 声明及引用
-def app = rootProject.ext.app
-def depsLibs = rootProject.ext.depsLibs
-def versions = rootProject.ext.versions
 android {
     compileSdkVersion app.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.targetSdkVersion
-        versionCode app.versionCode
-        versionName app.versionName
+        minSdkVersion this.app.minSdkVersion
+        targetSdkVersion this.app.targetSdkVersion
+        versionCode this.app.versionCode
+        versionName this.app.versionName
     }
 
     buildTypes {
@@ -32,10 +28,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     /*循环收入包*/
-    depsLibs.each { k, v -> api v }
-
+    api this.depsLibs.appcompat
+    api this.depsLibs.recyclerview
+    api this.depsLibs.eventbus
+    api this.depsLibs.arouterApi
     // 通用标题栏
-    api "com.github.wenkency:titlebar:${versions.titlebar}"
-
-
+    api this.depsLibs.titlebar
 }

@@ -42,7 +42,7 @@ public class UIUtils {
      *
      * @return
      */
-    public static Handler getmHandler() {
+    public static Handler getHandler() {
         return mHandler;
     }
 
@@ -66,7 +66,7 @@ public class UIUtils {
             runnable.run();
         } else {
             // 不在主线程
-            getmHandler().post(runnable);
+            getHandler().post(runnable);
         }
     }
 
@@ -96,20 +96,6 @@ public class UIUtils {
         return getResources().getStringArray(id);
 
     }
-
-
-    public static int px2dip(float px) {
-        // 缩放比例(密度)
-        float density = getResources().getDisplayMetrics().density;
-        return (int) (px / density + 0.5);
-    }
-
-    public static int dip2px(float dip) {
-        // 缩放比例(密度)
-        float density = getResources().getDisplayMetrics().density;
-        return (int) (dip * density + 0.5);
-    }
-
 
     /**
      * 颜色选择器
