@@ -27,11 +27,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    /*循环收入包*/
+    /*导入依赖*/
     api this.depsLibs.appcompat
     api this.depsLibs.recyclerview
+    //  通用标题栏
+    api this.depsLibs.titlebar
+    api this.depsLibs.utils
     api this.depsLibs.eventbus
     api this.depsLibs.arouterApi
-    // 通用标题栏
-    api this.depsLibs.titlebar
+    api this.depsLibs.butterKnife
 }

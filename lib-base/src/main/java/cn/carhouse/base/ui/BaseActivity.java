@@ -10,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import cn.carhouse.base.utils.KeyBordUtils;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import cn.carhouse.utils.KeyBordUtils;
 
 /**
  * ================================================================
@@ -25,6 +28,7 @@ import cn.carhouse.base.utils.KeyBordUtils;
  */
 public abstract class BaseActivity extends AppCompatActivity {
     protected View mContentView;
+    private Unbinder mBind;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,12 +97,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (isNeedEvent()) {
             EventBus.getDefault().register(this);
         }
+        if (isNeedBind()) {
+            mBind = ButterKnife.bind(this, view);
+        }
     }
 
     protected void unbindView() {
         // 事件
         if (isNeedEvent()) {
             EventBus.getDefault().unregister(this);
+        }
+        if (mBind != null) {
+            mBind.unbind();
+            mBind = null;
         }
         mContentView = null;
     }

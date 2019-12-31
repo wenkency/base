@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application>
         <provider
-            android:name=".provider.InitProvider"
+            android:name="cn.carhouse.utils.provider.InitProvider"
             android:authorities="${applicationId}.BaseProvider"
             android:exported="false"
             android:multiprocess="true" />

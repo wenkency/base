@@ -3,20 +3,18 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 // 阿里的ARouter
 apply plugin: 'com.alibaba.arouter'
+// butterKnife
+apply plugin: 'com.jakewharton.butterknife'
 
-// 声明及引用
-def app = rootProject.ext.app
-def appId = rootProject.ext.appId
-def versions = rootProject.ext.versions
 android {
-    compileSdkVersion app.compileSdkVersion
+    compileSdkVersion this.app.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.targetSdkVersion
-        versionCode app.versionCode
-        versionName app.versionName
-        applicationId appId.applicationId
+        minSdkVersion this.app.minSdkVersion
+        targetSdkVersion this.app.targetSdkVersion
+        versionCode this.app.versionCode
+        versionName this.app.versionName
+        applicationId this.appId.applicationId
 
         // 是注解编译用
         javaCompileOptions {
@@ -43,8 +41,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':lib-base')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation this.depsLibs.imageloader
     // 阿里ARouter
-    annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
-    // 图片加载
-    implementation 'com.github.wenkency:imageloader:1.1.0'
+    annotationProcessor this.depsLibs.arouterCompiler
+    annotationProcessor this.depsLibs.butterKnifeCompiler
 }

@@ -45,11 +45,22 @@ annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
 ### 使用方式
 
 ```
+ // Application初始化
+ ARouter.init(this);
+ // 测试用，实际用自己开发的页面
+ AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
+ AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
+ AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
+ AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
+
+
 @Route(path = "/b/videos")
 public class TestActivity extends AppActivity {
     // 阿里路由注入
     @Autowired
     String path;
+    // ButterKnife注入
+    @BindView(R.id.tv)
     TextView tv;
 
 
