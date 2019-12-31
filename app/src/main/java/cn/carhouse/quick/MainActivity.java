@@ -30,6 +30,8 @@ public class MainActivity extends AppActivity {
     @Override
     protected void initTitle(DefTitleBar titleBar) {
         titleBar.setTitle("我是主页面");
+        // 不要返回按钮
+        titleBar.clearBackImage();
     }
 
     @Override
