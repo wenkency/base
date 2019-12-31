@@ -18,6 +18,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestActivity" />
+
+
+        <!--清单配置-->
+        <provider
+            android:name="cn.carhouse.utils.provider.InitProvider"
+            android:authorities="${applicationId}.BaseProvider"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

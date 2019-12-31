@@ -2,11 +2,4 @@
     package="cn.carhouse.base">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <application>
-        <provider
-            android:name="cn.carhouse.utils.provider.InitProvider"
-            android:authorities="${applicationId}.BaseProvider"
-            android:exported="false"
-            android:multiprocess="true" />
-    </application>
 </manifest>

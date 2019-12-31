@@ -40,11 +40,20 @@ implementation "com.github.wenkency:base:1.4.0"
 // 阿里ARouter
 annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
 
-```
 
-### 使用方式
 
-```
+ <application
+        ...>
+       ...
+
+         <!--清单配置-->
+        <provider
+            android:name="cn.carhouse.utils.provider.InitProvider"
+            android:authorities="${applicationId}.BaseProvider"
+            android:exported="false"
+            android:multiprocess="true" />
+</application>
+
  // Application初始化
  ARouter.init(this);
  // 测试用，实际用自己开发的页面
@@ -53,7 +62,11 @@ annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
  AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
  AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
 
+```
 
+### 使用方式
+
+```
 @Route(path = "/b/videos")
 public class TestActivity extends AppActivity {
     // 阿里路由注入

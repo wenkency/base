@@ -23,7 +23,7 @@ ext {
             // EventBus
             eventbus           : "org.greenrobot:eventbus:3.1.1",
             // 自定义标题栏
-            titlebar           : "com.github.wenkency:titlebar:1.4.0",
+            titlebar           : "com.github.wenkency:titlebar:1.5.0",
             // 图片加载封装
             imageloader        : 'com.github.wenkency:imageloader:2.0.1',
             // butterKnife注入
