@@ -38,7 +38,7 @@ android {
 }
 
 
-implementation "com.github.wenkency:base:1.4.0"
+implementation "com.github.wenkency:base:1.6.0"
 // 阿里ARouter
 annotationProcessor this.dependLibs.arouterCompiler
 annotationProcessor this.dependLibs.butterKnifeCompiler
