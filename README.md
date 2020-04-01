@@ -12,8 +12,10 @@ allprojects {
 		}
 	}
 
-// 阿里的ARouter 运行时编译工具
+// 阿里的ARouter
 apply plugin: 'com.alibaba.arouter'
+// butterKnife
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     ...
@@ -38,11 +40,12 @@ android {
 
 implementation "com.github.wenkency:base:1.4.0"
 // 阿里ARouter
-annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
+annotationProcessor this.dependLibs.arouterCompiler
+annotationProcessor this.dependLibs.butterKnifeCompiler
 
 
 
- <application
+<application
         ...>
        ...
 
@@ -62,6 +65,16 @@ annotationProcessor "com.alibaba:arouter-compiler:${versions.arouterCompiler}"
  AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
  AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
 
+```
+
+### 已依赖
+```android
+    //  通用标题栏
+    api this.dependLibs.titlebar
+    api this.dependLibs.utils
+    api this.dependLibs.eventbus
+    api this.dependLibs.arouterApi
+    api this.dependLibs.butterKnife
 ```
 
 ### 使用方式

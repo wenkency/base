@@ -5,7 +5,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.wenkency'
 
 android {
-    compileSdkVersion app.compileSdkVersion
+    compileSdkVersion this.app.compileSdkVersion
+    buildToolsVersion this.app.buildToolsVersion
 
     defaultConfig {
         minSdkVersion this.app.minSdkVersion
@@ -28,12 +29,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     /*导入依赖*/
-    api this.depsLibs.appcompat
-    api this.depsLibs.recyclerview
+    implementation this.dependLibs.appcompat
+    implementation this.dependLibs.recyclerview
     //  通用标题栏
-    api this.depsLibs.titlebar
-    api this.depsLibs.utils
-    api this.depsLibs.eventbus
-    api this.depsLibs.arouterApi
-    api this.depsLibs.butterKnife
+    api this.dependLibs.titlebar
+    api this.dependLibs.utils
+    api this.dependLibs.eventbus
+    api this.dependLibs.arouterApi
+    api this.dependLibs.butterKnife
 }

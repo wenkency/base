@@ -6,10 +6,15 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -175,5 +180,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         closeKeyBord();
         super.onDestroy();
     }
+
 
 }

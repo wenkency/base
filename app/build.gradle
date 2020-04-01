@@ -8,6 +8,7 @@ apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion this.app.compileSdkVersion
+    buildToolsVersion this.app.buildToolsVersion
 
     defaultConfig {
         minSdkVersion this.app.minSdkVersion
@@ -41,8 +42,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':lib-base')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation this.depsLibs.imageloader
+    implementation this.dependLibs.appcompat
+    implementation this.dependLibs.recyclerview
+    implementation this.dependLibs.imageloader
     // 阿里ARouter
-    annotationProcessor this.depsLibs.arouterCompiler
-    annotationProcessor this.depsLibs.butterKnifeCompiler
+    annotationProcessor this.dependLibs.arouterCompiler
+    annotationProcessor this.dependLibs.butterKnifeCompiler
 }
