@@ -5,6 +5,16 @@
 ### 引入
 
 ```
+buildscript {
+
+    dependencies {
+        ...
+        // 阿里的ARouter
+        classpath "com.alibaba:arouter-register:1.0.2"
+        // butterKnife
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
+    }
+}
 allprojects {
 		repositories {
 			...
@@ -38,7 +48,7 @@ android {
 }
 
 
-implementation "com.github.wenkency:base:1.6.0"
+implementation "com.github.wenkency:base:1.7.0"
 // 阿里ARouter
 annotationProcessor this.dependLibs.arouterCompiler
 annotationProcessor this.dependLibs.butterKnifeCompiler
