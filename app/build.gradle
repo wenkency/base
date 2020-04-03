@@ -42,10 +42,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':lib-base')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation this.dependLibs.appcompat
-    implementation this.dependLibs.recyclerview
-    implementation this.dependLibs.imageloader
     // 阿里ARouter
     annotationProcessor this.dependLibs.arouterCompiler
     annotationProcessor this.dependLibs.butterKnifeCompiler
+    implementation this.dependLibs.appcompat
+    implementation this.dependLibs.recyclerview
+    implementation this.dependLibs.imageloader
+    implementation this.dependLibs.utils
 }

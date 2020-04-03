@@ -33,7 +33,7 @@ ext {
             arouterCompiler    : "com.alibaba:arouter-compiler:1.2.2",
             // 自己定义的库====================三方和系统写在上面========================================
             // 常用的工具类
-            utils              : 'com.github.wenkency:utils:1.4.0',
+            utils              : 'com.github.wenkency:utils:1.5.0',
             // 自定义标题栏
             titlebar           : "com.github.wenkency:titlebar:1.5.0",
             // 图片加载封装

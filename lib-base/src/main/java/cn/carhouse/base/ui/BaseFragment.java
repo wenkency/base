@@ -17,8 +17,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import cn.carhouse.utils.KeyBordUtils;
-import cn.carhouse.utils.LogUtils;
 
 /**
  * ================================================================
@@ -46,7 +44,6 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mActivity = (Activity) context;
-        LogUtils.setDebug(true);
     }
 
     @Override
@@ -83,7 +80,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        LogUtils.e("setUserVisibleHint "+isVisibleToUser);
         if (isInit) {
             fragmentVisible(isVisibleToUser);
         }
@@ -91,7 +87,6 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        LogUtils.e("onHiddenChanged "+hidden);
         // 第一创建的时候不会走
         if (isInit) {
             fragmentVisible(!hidden);
