@@ -20,9 +20,14 @@ public interface IPresenter<M extends IModel, V extends IView> {
     void detach();
 
     /**
-     * 获取View
+     * 获取代理的View
      */
     V getView();
+
+    /**
+     * 获取真正的View
+     */
+    V getRealView();
 
     /**
      * 获取Model

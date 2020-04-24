@@ -13,4 +13,16 @@
         android:textColor="@color/titleColor"
         android:textSize="20dp" />
 
+    <Button
+        android:onClick="loadItem"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="加载单个条目" />
+
+    <Button
+        android:onClick="loadList"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:text="加载多个条目" />
 </FrameLayout>

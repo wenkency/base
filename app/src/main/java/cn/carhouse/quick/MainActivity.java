@@ -1,17 +1,27 @@
 package cn.carhouse.quick;
 
 import android.view.View;
+import android.widget.TextView;
 
-import cn.carhouse.base.ui.AppActivity;
-import cn.carhouse.base.ui.FragmentUtils;
+import com.lven.retrofit.callback.OnCallback;
+
+import java.util.List;
+
+import butterknife.BindView;
+import cn.carhouse.base.ui.mvp.MvpActivity;
+import cn.carhouse.quick.presenter.MainPresenter;
+import cn.carhouse.quick.view.IMainView;
 import cn.carhouse.titlebar.DefTitleBar;
 
 
-public class MainActivity extends AppActivity {
+public class MainActivity extends MvpActivity<MainPresenter> implements IMainView {
+
+    @BindView(R.id.tv)
+    TextView tv;
 
     @Override
     public int getContentLayout() {
-        return R.layout.activity_main;
+        return R.layout.activity_test;
     }
 
     @Override
@@ -21,15 +31,35 @@ public class MainActivity extends AppActivity {
         titleBar.clearBackImage();
     }
 
-    @Override
-    public void initViews(View view) {
-        FragmentUtils.changeFragment(getSupportFragmentManager(), R.id.fl_fragment, new TestFragment());
+    public void loadItem(View view) {
+
+        //  getPresenter().loadItem();
+        MainPresenter.loadItem(this, new OnCallback() {
+            @Override
+            public void onSuccess(String response) {
+                showItem(response);
+            }
+        });
     }
 
-
-    @Override
-    public boolean isNeedEvent() {
-        return true;
+    public void loadList(View view) {
+        getPresenter().loadList();
     }
 
+//    @Override
+//    public void initViews(View view) {
+//        FragmentUtils.changeFragment(getSupportFragmentManager(), R.id.fl_fragment, new TestFragment());
+//    }
+
+
+    @Override
+    public void showItem(String item) {
+        tv.setText(item);
+    }
+
+    @Override
+    public void showList(List<String> items) {
+        tv.setText(items.toString());
+
+    }
 }

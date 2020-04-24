@@ -20,10 +20,10 @@ public class FragmentPresenter<V extends IBaseView> {
         }
         this.baseView = view;
         // 1. 初始化数据
-        getBaseView().initData(savedInstanceState);
+        baseView.initData(savedInstanceState);
         // 2. 设置ContentView
         View contentView = initContentView(inflater);
-        getBaseView().setContentView(contentView);
+        baseView.setContentView(contentView);
 
     }
 
@@ -31,17 +31,17 @@ public class FragmentPresenter<V extends IBaseView> {
         // 3. 绑定View
         bindView(contentView);
         // 4. 初始化标题
-        getBaseView().initTitle();
+        baseView.initTitle();
         // 5. 初始化View
-        getBaseView().initViews(contentView);
+        baseView.initViews(contentView);
         // 6. 初化View之后
-        getBaseView().afterInitViews();
+        baseView.afterInitViews();
         // 7. 网络请求
-        getBaseView().initNet();
+        baseView.initNet();
     }
 
     private View initContentView(LayoutInflater inflater) {
-        int layoutId = getBaseView().getContentLayout();
+        int layoutId = baseView.getContentLayout();
         return inflater.inflate(layoutId, null, false);
     }
 
@@ -50,17 +50,17 @@ public class FragmentPresenter<V extends IBaseView> {
      * 绑定View
      */
     private void bindView(View view) {
-        if (getBaseView().isNeedEvent()) {
+        if (baseView.isNeedEvent()) {
             EventBus.getDefault().register(baseView);
         }
-        if (getBaseView().isNeedBind()) {
+        if (baseView.isNeedBind()) {
             mBind = ButterKnife.bind(baseView, view);
         }
     }
 
     protected void unbindView() {
         // 事件
-        if (getBaseView().isNeedEvent()) {
+        if (baseView.isNeedEvent()) {
             EventBus.getDefault().unregister(baseView);
         }
         if (mBind != null) {
@@ -73,7 +73,7 @@ public class FragmentPresenter<V extends IBaseView> {
      * 关闭软键盘
      */
     private void closeKeyBord() {
-        KeyBordUtils.closeKeyBord(getBaseView().getAppActivity());
+        KeyBordUtils.closeKeyBord(baseView.getAppActivity());
     }
 
     public void detach() {
@@ -83,7 +83,4 @@ public class FragmentPresenter<V extends IBaseView> {
         baseView = null;
     }
 
-    public V getBaseView() {
-        return baseView;
-    }
 }

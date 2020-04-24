@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.ParameterizedType;
+
 import cn.carhouse.base.ui.AppActivity;
 import cn.carhouse.base.ui.mvp.core.IPresenter;
 import cn.carhouse.base.ui.mvp.core.IProxyPresenter;
@@ -63,8 +65,22 @@ public abstract class MvpActivity<P extends IPresenter> extends AppActivity impl
         super.onDestroy();
     }
 
+    /**
+     * 创建Presenter
+     * 子类要指定泛型类型如：MainActivity extends MvpActivity<MainPresenter>
+     */
+    protected P createPresenter() {
+        try {
+            ParameterizedType superClass = (ParameterizedType) this.getClass().getGenericSuperclass();
+            Class actualType = (Class) superClass.getActualTypeArguments()[0];
+            mPresenter = (P) actualType.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mPresenter;
+    }
 
-    protected abstract P createPresenter();
-
-
+    public P getPresenter() {
+        return mPresenter;
+    }
 }

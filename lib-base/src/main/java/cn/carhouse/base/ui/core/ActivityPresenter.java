@@ -11,6 +11,7 @@ import butterknife.Unbinder;
 import cn.carhouse.base.ui.KeyBordUtils;
 
 public class ActivityPresenter<V extends IBaseView> {
+    // 这个就是传递进来的Activity
     private V baseView;
     private Unbinder mBind;
 
@@ -20,24 +21,24 @@ public class ActivityPresenter<V extends IBaseView> {
         }
         this.baseView = view;
         // 1. 初始化数据
-        getBaseView().initData(savedInstanceState);
+        baseView.initData(savedInstanceState);
         // 2. 设置ContentView
         View contentView = initContentView(inflater);
-        getBaseView().setContentView(contentView);
+        baseView.setContentView(contentView);
         // 3. 绑定View
         bindView(contentView);
         // 4. 初始化标题
-        getBaseView().initTitle();
+        baseView.initTitle();
         // 5. 初始化View
-        getBaseView().initViews(contentView);
+        baseView.initViews(contentView);
         // 6. 初化View之后
-        getBaseView().afterInitViews();
+        baseView.afterInitViews();
         // 7. 网络请求
-        getBaseView().initNet();
+        baseView.initNet();
     }
 
     private View initContentView(LayoutInflater inflater) {
-        int layoutId = getBaseView().getContentLayout();
+        int layoutId = baseView.getContentLayout();
         return inflater.inflate(layoutId, null, false);
     }
 
@@ -46,17 +47,17 @@ public class ActivityPresenter<V extends IBaseView> {
      * 绑定View
      */
     private void bindView(View view) {
-        if (getBaseView().isNeedEvent()) {
+        if (baseView.isNeedEvent()) {
             EventBus.getDefault().register(baseView);
         }
-        if (getBaseView().isNeedBind()) {
+        if (baseView.isNeedBind()) {
             mBind = ButterKnife.bind(baseView, view);
         }
     }
 
     protected void unbindView() {
         // 事件
-        if (getBaseView().isNeedEvent()) {
+        if (baseView.isNeedEvent()) {
             EventBus.getDefault().unregister(baseView);
         }
         if (mBind != null) {
@@ -69,7 +70,7 @@ public class ActivityPresenter<V extends IBaseView> {
      * 关闭软键盘
      */
     private void closeKeyBord() {
-        KeyBordUtils.closeKeyBord(getBaseView().getAppActivity());
+        KeyBordUtils.closeKeyBord(baseView.getAppActivity());
     }
 
     public void detach() {
@@ -79,7 +80,4 @@ public class ActivityPresenter<V extends IBaseView> {
         baseView = null;
     }
 
-    public V getBaseView() {
-        return baseView;
-    }
 }

@@ -1,6 +1,8 @@
 package cn.carhouse.base.ui.mvp.impl;
 
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
@@ -25,24 +27,25 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
 
     @Override
     public void attach(V view) {
+        if (view == null) {
+            return;
+        }
         this.mView = new WeakReference<>(view);
-
         // 1. 使用动态代理，统一判空
-        InvocationHandler handler = new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                // 在这里统一判空
-                if (mView == null || mView.get() == null) {
-                    return null;
-                }
-                return method.invoke(mView.get(), args);
-            }
-        };
         mProxyView = (V) Proxy.newProxyInstance
                 (
-                        view.getClass().getClassLoader(),
-                        view.getClass().getInterfaces(),
-                        handler
+                        IView.class.getClassLoader(),
+                        ProxyUtils.getProxyClass(view, IView.class),
+                        new InvocationHandler() {
+                            @Override
+                            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                                // 在这里统一判空
+                                if (mView == null || mView.get() == null) {
+                                    return null;
+                                }
+                                return method.invoke(mView.get(), args);
+                            }
+                        }
                 );
         try {
             ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
@@ -54,6 +57,7 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
             e.printStackTrace();
         }
 
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -65,11 +69,25 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         if (mModel != null) {
             mModel = null;
         }
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onEvent(BasePresenter basePresenter) {
+
     }
 
     @Override
     public V getView() {
         return mProxyView;
+    }
+
+    @Override
+    public V getRealView() {
+        if (mView == null || mView.get() == null) {
+            return null;
+        }
+        return mView.get();
     }
 
     @Override
