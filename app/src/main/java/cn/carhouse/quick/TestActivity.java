@@ -18,7 +18,7 @@ public class TestActivity extends AppActivity {
 
 
     @Override
-    protected Object getContentLayout() {
+    public int getContentLayout() {
         return R.layout.activity_test;
     }
 
@@ -28,13 +28,13 @@ public class TestActivity extends AppActivity {
     }
 
     @Override
-    protected void initViews(View view) {
+    public void initViews(View view) {
         ARouter.getInstance().inject(this);
         FragmentUtils.changeFragment(getSupportFragmentManager(), R.id.fl_fragment, new TestFragment());
     }
 
     @Override
-    protected void initNet() {
+    public void initNet() {
 
     }
 }

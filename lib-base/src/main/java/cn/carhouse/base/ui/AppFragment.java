@@ -29,13 +29,21 @@ public abstract class AppFragment extends BaseFragment implements AppPagerListen
 
     // 初始化加载页面==============================================================================
     @Override
-    protected void afterInitViews() {
+    public void afterInitViews() {
         // 初始化加载页面
         if (isNeedLoading()) {
             // 初始化加载页面
             mLoadingLayout = LoadingManager.generate(getLoadingParentView(), getOnLoadingListener());
-            mLoadingLayout.showContent();
+            afterLoadingView();
         }
+    }
+
+    /**
+     * 默认显示内容页面，
+     * 可以复写这个方法，显示其它加载页面
+     */
+    protected void afterLoadingView() {
+        showContent();
     }
 
     /**
@@ -72,7 +80,7 @@ public abstract class AppFragment extends BaseFragment implements AppPagerListen
      */
     @Override
     public Object getLoadingParentView() {
-        return mContentView;
+        return getContentView();
     }
 
 
@@ -107,6 +115,7 @@ public abstract class AppFragment extends BaseFragment implements AppPagerListen
      * 网络失败点击重新调用
      */
     protected void onRetryClick() {
+        showLoading();
         initNet();
     }
 

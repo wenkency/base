@@ -57,7 +57,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
 
     // 初始化标题栏==============================================================================
     @Override
-    protected void initTitle() {
+    public void initTitle() {
         if (isNeedTitle()) {
             mTitleBar = new DefTitleBuilder(this)
                     // 返回按钮
@@ -74,7 +74,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
     }
 
     @Override
-    protected void initViews(View view) {
+    public void initViews(View view) {
 
     }
 
@@ -93,13 +93,21 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
 
     // 初始化加载页面==============================================================================
     @Override
-    protected void afterInitViews() {
+    public void afterInitViews() {
         // 初始化加载页面
         if (isNeedLoading()) {
             // 初始化加载页面
             mLoadingLayout = LoadingManager.generate(getLoadingParentView(), getOnLoadingListener());
-            mLoadingLayout.showContent();
+            afterLoadingView();
         }
+    }
+
+    /**
+     * 默认显示内容页面，
+     * 可以复写这个方法，显示其它加载页面
+     */
+    protected void afterLoadingView() {
+        showContent();
     }
 
     /**
@@ -136,7 +144,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
      */
     @Override
     public Object getLoadingParentView() {
-        return mContentView;
+        return getContentView();
     }
 
 
@@ -171,6 +179,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
      * 网络失败点击重新调用
      */
     protected void onRetryClick() {
+        showLoading();
         initNet();
     }
 

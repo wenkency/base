@@ -10,7 +10,7 @@ import cn.carhouse.titlebar.DefTitleBar;
 public class MainActivity extends AppActivity {
 
     @Override
-    protected Object getContentLayout() {
+    public int getContentLayout() {
         return R.layout.activity_main;
     }
 
@@ -22,13 +22,13 @@ public class MainActivity extends AppActivity {
     }
 
     @Override
-    protected void initViews(View view) {
+    public void initViews(View view) {
         FragmentUtils.changeFragment(getSupportFragmentManager(), R.id.fl_fragment, new TestFragment());
     }
 
 
     @Override
-    protected boolean isNeedEvent() {
+    public boolean isNeedEvent() {
         return true;
     }
 

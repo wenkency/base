@@ -7,126 +7,115 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import cn.carhouse.base.ui.core.ActivityPresenter;
+import cn.carhouse.base.ui.core.IBaseView;
 
 /**
- * ================================================================
- * 版权: 爱车小屋所有（C） 2019
- * <p>
- * 作者：刘付文 （61128910@qq.com）
- * <p>
- * 时间: 2019-11-14 17:12
- * <p>
- * 描述：Activity基类
- * ================================================================
+ * 抽离基本的Activity
  */
-public abstract class BaseActivity extends AppCompatActivity {
-    protected View mContentView;
-    private Unbinder mBind;
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
+    private View mContentView;
+    private ActivityPresenter<IBaseView> activityPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 1. 初始化数据
-        initData(savedInstanceState);
-        // 2. 设置ContentView
-        mContentView = initContentView();
-        // 3. 绑定View
-        bindView(mContentView);
-        // 4. 初始化标题
-        initTitle();
-        // 5. 初始化View
-        initViews(mContentView);
-        // 6. 初化View之后
-        afterInitViews();
-        // 7. 网络请求
-        initNet();
+        activityPresenter = new ActivityPresenter<>();
+        activityPresenter.attach(this, savedInstanceState, getLayoutInflater());
     }
 
-    /**
-     * 初始化View之后
-     */
-    protected void afterInitViews() {
-
-    }
-
-    protected void initData(Bundle savedInstanceState) {
-
-    }
-
-    protected View initContentView() {
-        Object layout = getContentLayout();
-        View contentView = null;
-        if (layout instanceof View) {
-            contentView = (View) layout;
-        } else if (layout instanceof Integer) {
-            contentView = getLayoutInflater()
-                    .inflate((Integer) layout, null, false);
-        }
-        if (contentView == null) {
-            new IllegalArgumentException("getContentLayout must View or LayoutId");
-        }
-        // 设置布局
-        setContentView(contentView);
-        return contentView;
-    }
-
-    protected abstract Object getContentLayout();
-
-    protected void initTitle() {
-
-    }
-
-    protected abstract void initViews(View view);
-
-
-    protected void initNet() {
-
-    }
-
-    /**
-     * 绑定View
-     */
-    protected void bindView(View view) {
-        if (isNeedEvent()) {
-            EventBus.getDefault().register(this);
-        }
-        if (isNeedBind()) {
-            mBind = ButterKnife.bind(this, view);
-        }
-    }
-
-    protected void unbindView() {
-        // 事件
-        if (isNeedEvent()) {
-            EventBus.getDefault().unregister(this);
-        }
-        if (mBind != null) {
-            mBind.unbind();
-            mBind = null;
+    @Override
+    protected void onDestroy() {
+        if (activityPresenter != null) {
+            activityPresenter.detach();
+            activityPresenter = null;
         }
         mContentView = null;
+        super.onDestroy();
     }
 
     /**
-     * 要不要绑定，默认是绑定的
+     * 1. 初始化数据
      */
-    protected boolean isNeedBind() {
+    @Override
+    public void initData(Bundle savedInstanceState) {
+
+    }
+
+    /**
+     * 2. 设置ContentView
+     */
+    @Override
+    public final void setContentView(View view) {
+        super.setContentView(view);
+        mContentView = view;
+    }
+
+    @Override
+    public View getContentView() {
+        return mContentView;
+    }
+
+    @Override
+    public abstract int getContentLayout();
+
+    /**
+     * 3.初始化标题
+     */
+    @Override
+    public void initTitle() {
+
+    }
+
+    /**
+     * 4. 初始化View
+     */
+    @Override
+    public void initViews(View contentView) {
+
+    }
+
+    /**
+     * 5. After初始化View
+     */
+    @Override
+    public void afterInitViews() {
+
+    }
+
+    /**
+     * 6. 访问网络
+     */
+    @Override
+    public void initNet() {
+
+    }
+
+    /**
+     * 默认绑定ButterKnife
+     */
+    @Override
+    public boolean isNeedBind() {
         return true;
     }
 
-
     /**
-     * 要不要注册EventBus，默认是不用EventBus
+     * 默认不注册EventBus
      */
-    protected boolean isNeedEvent() {
+    @Override
+    public boolean isNeedEvent() {
         return false;
     }
+
+
+    @Override
+    public Activity getAppActivity() {
+        return this;
+    }
+
 
     /**
      * 默认注册
@@ -137,43 +126,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 获取Actviity
-     */
-    public Activity getAppActivity() {
-        return this;
-    }
-
-
-    /**
      * 关闭软键盘
      */
-    protected void closeKeyBord() {
+    public void closeKeyBord() {
         KeyBordUtils.closeKeyBord(getAppActivity());
     }
 
     /**
      * 关闭软键盘
      */
-    protected void closeKeyBord(View view) {
+    public void closeKeyBord(View view) {
         KeyBordUtils.closeKeyBord(view);
     }
 
     /**
      * 打开软键盘
      */
-    protected void openKeyBord(final View view) {
+    public void openKeyBord(final View view) {
         KeyBordUtils.openKeyBord(view);
     }
-
-
-    @Override
-    protected void onDestroy() {
-        // 7. 解绑View
-        unbindView();
-        // 关闭软件盘
-        closeKeyBord();
-        super.onDestroy();
-    }
-
-
 }

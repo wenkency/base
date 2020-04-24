@@ -11,34 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import cn.carhouse.base.ui.core.FragmentPresenter;
+import cn.carhouse.base.ui.core.IBaseView;
 
 /**
- * ================================================================
- * 版权: 爱车小屋所有（C） 2019
- * <p>
- * 作者：刘付文 （61128910@qq.com）
- * <p>
- * 时间: 2019-11-14 17:12
- * <p>
- * 描述：Fragment基类
- * ================================================================
+ * 抽离基本的Fragment
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements IBaseView {
+    private View mContentView;
+    private FragmentPresenter activityPresenter;
     private Activity mActivity;
-    protected View mContentView;
-
-    private boolean isInit;
-    private Unbinder mBind;
-
-    public Activity getAppActivity() {
-        return mActivity;
-    }
+    private boolean isInit = false;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -49,33 +35,26 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData(savedInstanceState);
+        activityPresenter = new FragmentPresenter();
+        activityPresenter.attach(this, savedInstanceState, getLayoutInflater());
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return mContentView = initContentView();
+        return mContentView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        if (!isInit) {
-            // 3. 绑定View
-            bindView(mContentView);
-            // 4. 初始化标题
-            initTitle();
-            // 5. 初始化View
-            initViews(mContentView);
-            // 6. 初化View之后
-            afterInitViews();
-            // 7. 初始化网络
-            initNet();
+        if (isInit) {
+            return;
+        }
+        if (activityPresenter != null) {
+            activityPresenter.onViewCreated(mContentView);
         }
         isInit = true;
-
     }
-
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -96,85 +75,96 @@ public abstract class BaseFragment extends Fragment {
     /**
      * Fragment状态改变的时候调用
      */
-    protected void fragmentVisible(boolean isVisibleToUser) {
+    public void fragmentVisible(boolean isVisibleToUser) {
 
     }
 
-
-    protected void initData(Bundle savedInstanceState) {
-
-    }
-
-    protected View initContentView() {
-        Object layout = getContentLayout();
-        View contentView = null;
-        if (layout instanceof View) {
-            contentView = (View) layout;
-        } else if (layout instanceof Integer) {
-            contentView = getLayoutInflater()
-                    .inflate((Integer) layout, null, false);
-        }
-        if (contentView == null) {
-            new IllegalArgumentException("getContentLayout must View or LayoutId");
-        }
-        // 设置布局
-        return contentView;
-    }
-
-    protected abstract Object getContentLayout();
-
-    protected void initTitle() {
-
-    }
-
-    protected abstract void initViews(View view);
-
-    /**
-     * 初始化View之后
-     */
-    protected void afterInitViews() {
-
-    }
-
-    protected void initNet() {
-
-    }
-
-
-    protected void bindView(View view) {
-        if (isNeedEvent()) {
-            EventBus.getDefault().register(this);
-        }
-        if (isNeedBind()) {
-            mBind = ButterKnife.bind(this, view);
-        }
-    }
-
-    protected void unbindView() {
-        // 事件
-        if (isNeedEvent()) {
-            EventBus.getDefault().unregister(this);
-        }
-        if (mBind != null) {
-            mBind.unbind();
-            mBind = null;
+    @Override
+    public void onDestroy() {
+        if (activityPresenter != null) {
+            activityPresenter.detach();
+            activityPresenter = null;
         }
         mContentView = null;
+        super.onDestroy();
+    }
+
+
+    /**
+     * 1. 初始化数据
+     */
+    @Override
+    public void initData(Bundle savedInstanceState) {
+
     }
 
     /**
-     * 要不要绑定
+     * 2. 设置ContentView
      */
-    protected boolean isNeedBind() {
+    @Override
+    public final void setContentView(View view) {
+        mContentView = view;
+    }
+
+    @Override
+    public View getContentView() {
+        return mContentView;
+    }
+
+    @Override
+    public abstract int getContentLayout();
+
+    /**
+     * 3.初始化标题
+     */
+    @Override
+    public void initTitle() {
+
+    }
+
+    /**
+     * 4. 初始化View
+     */
+    @Override
+    public void initViews(View contentView) {
+
+    }
+
+    /**
+     * 5. After初始化View
+     */
+    @Override
+    public void afterInitViews() {
+
+    }
+
+    /**
+     * 6. 访问网络
+     */
+    @Override
+    public void initNet() {
+
+    }
+
+    /**
+     * 默认绑定ButterKnife
+     */
+    @Override
+    public boolean isNeedBind() {
         return true;
     }
 
-
     /**
-     * 要不要注册EventBus
+     * 默认不注册EventBus
      */
-    protected boolean isNeedEvent() {
+    @Override
+    public boolean isNeedEvent() {
         return false;
+    }
+
+    @Override
+    public Activity getAppActivity() {
+        return mActivity;
     }
 
     /**
@@ -188,33 +178,21 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 关闭软键盘
      */
-    protected void closeKeyBord() {
+    public void closeKeyBord() {
         KeyBordUtils.closeKeyBord(getAppActivity());
     }
 
     /**
      * 关闭软键盘
      */
-    protected void closeKeyBord(View view) {
+    public void closeKeyBord(View view) {
         KeyBordUtils.closeKeyBord(view);
     }
 
     /**
      * 打开软键盘
      */
-    protected void openKeyBord(View view) {
+    public void openKeyBord(final View view) {
         KeyBordUtils.openKeyBord(view);
     }
-
-
-    @Override
-    public void onDestroy() {
-        // 7. 解绑View
-        unbindView();
-        // 关闭软件盘
-        closeKeyBord();
-        super.onDestroy();
-    }
-
-
 }

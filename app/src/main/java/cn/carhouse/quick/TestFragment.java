@@ -13,30 +13,30 @@ public class TestFragment extends AppFragment {
     TextView tv;
 
     @Override
-    protected Object getContentLayout() {
+    public int getContentLayout() {
         return R.layout.fragment_test;
     }
 
     @Override
-    protected void initData(Bundle savedInstanceState) {
+    public void initData(Bundle savedInstanceState) {
         LogUtils.setDebug(true);
         LogUtils.e("initData");
     }
 
     @Override
-    protected void initViews(View view) {
+    public void initViews(View view) {
         LogUtils.e("initViews");
         tv.setText(tv.getText() + "initViews");
     }
 
     @Override
-    protected void initNet() {
+    public void initNet() {
         LogUtils.e("initNet");
     }
 
 
     @Override
-    protected void fragmentVisible(boolean isVisibleToUser) {
+    public void fragmentVisible(boolean isVisibleToUser) {
         LogUtils.e("fragmentVisible  " + isVisibleToUser);
     }
 
