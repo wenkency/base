@@ -49,5 +49,5 @@ dependencies {
     implementation this.dependLibs.recyclerview
     implementation this.dependLibs.imageloader
     implementation this.dependLibs.utils
-    implementation 'com.github.wenkency:retrofit:1.0.0'
+    implementation this.dependLibs.retrofit
 }

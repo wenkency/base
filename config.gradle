@@ -38,5 +38,7 @@ ext {
             titlebar           : "com.github.wenkency:titlebar:1.5.0",
             // 图片加载封装
             imageloader        : 'com.github.wenkency:imageloader:2.2.0',
+            // 网络加载库
+            retrofit           : 'com.github.wenkency:retrofit:1.1.0',
     ]
 }

@@ -18,6 +18,8 @@ public class AppApplication extends Application {
         AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
         AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
         AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
+        // 设置标题颜色
+        AppConfig.setTitleBackgroundColor(this.getResources().getColor(R.color.colorPrimaryDark));
 
         RestConfig.getInstance()
                 .setBaseUrl("http://httpbin.org/")

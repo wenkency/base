@@ -16,6 +16,7 @@ import cn.carhouse.titlebar.DefTitleBar;
 
 public class MainActivity extends MvpActivity<MainPresenter> implements IMainView {
 
+
     @BindView(R.id.tv)
     TextView tv;
 
@@ -34,6 +35,8 @@ public class MainActivity extends MvpActivity<MainPresenter> implements IMainVie
     public void loadItem(View view) {
 
         //  getPresenter().loadItem();
+
+
         MainPresenter.loadItem(this, new OnCallback() {
             @Override
             public void onSuccess(String response) {
@@ -60,6 +63,5 @@ public class MainActivity extends MvpActivity<MainPresenter> implements IMainVie
     @Override
     public void showList(List<String> items) {
         tv.setText(items.toString());
-
     }
 }

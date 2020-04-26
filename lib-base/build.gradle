@@ -30,7 +30,6 @@ dependencies {
 
     /*导入依赖*/
     implementation this.dependLibs.appcompat
-    implementation this.dependLibs.recyclerview
     //  通用标题栏
     api this.dependLibs.titlebar
     api this.dependLibs.eventbus
