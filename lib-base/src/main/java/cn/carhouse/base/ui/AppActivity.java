@@ -43,6 +43,10 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
      */
     public static int TITLE_TEXT_COLOR = Color.WHITE;
     /**
+     * 标题右边文本颜色
+     */
+    public static int TITLE_RIGHT_TEXT_COLOR = Color.WHITE;
+    /**
      * 标题栏的颜色
      */
     public static int TITLE_CONTENT_COLOR = Color.parseColor("#008577");

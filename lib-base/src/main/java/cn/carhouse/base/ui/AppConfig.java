@@ -15,6 +15,20 @@ public class AppConfig {
     }
 
     /**
+     * 设置标题文本颜色
+     */
+    public static void setTitleColor(int color) {
+        AppActivity.TITLE_TEXT_COLOR = color;
+    }
+
+    /**
+     * 设置标题右边文本颜色
+     */
+    public static void setRightTextColor(int color) {
+        AppActivity.TITLE_RIGHT_TEXT_COLOR = color;
+    }
+
+    /**
      * 设置内容背景颜色
      */
     public static void setContentBackgroundColor(int color) {
