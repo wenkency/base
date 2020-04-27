@@ -1,5 +1,6 @@
 package cn.carhouse.quick;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,6 +31,13 @@ public class MainActivity extends MvpActivity<MainPresenter> implements IMainVie
         titleBar.setTitle("我是主页面");
         // 不要返回按钮
         titleBar.clearBackImage();
+        titleBar.setRightTextColor(Color.WHITE);
+        titleBar.setRightText("测试", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public void loadItem(View view) {
