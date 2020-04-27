@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import butterknife.BindView;
 import cn.carhouse.base.ui.AppFragment;
 import cn.carhouse.utils.LogUtils;
 
 public class TestFragment extends AppFragment {
-    @BindView(R.id.tv)
     TextView tv;
 
     @Override
@@ -26,6 +24,7 @@ public class TestFragment extends AppFragment {
     @Override
     public void initViews(View view) {
         LogUtils.e("initViews");
+        tv = findViewById(R.id.tv);
         tv.setText(tv.getText() + "initViews");
     }
 

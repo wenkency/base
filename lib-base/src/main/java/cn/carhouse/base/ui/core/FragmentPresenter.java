@@ -6,19 +6,17 @@ import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.carhouse.base.ui.KeyBordUtils;
 
 public class FragmentPresenter<V extends IBaseView> {
     private V baseView;
-    private Unbinder mBind;
 
     public void attach(final V view, Bundle savedInstanceState, LayoutInflater inflater) {
         if (view == null) {
             return;
         }
         this.baseView = view;
+        registerEvent();
         // 1. 初始化数据
         baseView.initData(savedInstanceState);
         // 2. 设置ContentView
@@ -29,7 +27,7 @@ public class FragmentPresenter<V extends IBaseView> {
 
     public void onViewCreated(View contentView) {
         // 3. 绑定View
-        bindView(contentView);
+        baseView.bindView(contentView);
         // 4. 初始化标题
         baseView.initTitle();
         // 5. 初始化View
@@ -47,25 +45,21 @@ public class FragmentPresenter<V extends IBaseView> {
 
 
     /**
-     * 绑定View
+     * 注册EventBus
      */
-    private void bindView(View view) {
+    private void registerEvent() {
         if (baseView.isNeedEvent()) {
             EventBus.getDefault().register(baseView);
         }
-        if (baseView.isNeedBind()) {
-            mBind = ButterKnife.bind(baseView, view);
-        }
     }
 
-    protected void unbindView() {
+    /**
+     * 解绑EventBus
+     */
+    private void unregisterEvent() {
         // 事件
         if (baseView.isNeedEvent()) {
             EventBus.getDefault().unregister(baseView);
-        }
-        if (mBind != null) {
-            mBind.unbind();
-            mBind = null;
         }
     }
 
@@ -77,8 +71,9 @@ public class FragmentPresenter<V extends IBaseView> {
     }
 
     public void detach() {
+        unregisterEvent();
         // 7. 解绑View
-        unbindView();
+        baseView.unbindView();
         closeKeyBord();
         baseView = null;
     }

@@ -3,12 +3,12 @@ package cn.carhouse.quick;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lven.retrofit.callback.OnCallback;
 
 import java.util.List;
 
-import butterknife.BindView;
 import cn.carhouse.base.ui.mvp.MvpActivity;
 import cn.carhouse.quick.presenter.MainPresenter;
 import cn.carhouse.quick.view.IMainView;
@@ -18,7 +18,6 @@ import cn.carhouse.titlebar.DefTitleBar;
 public class MainActivity extends MvpActivity<MainPresenter> implements IMainView {
 
 
-    @BindView(R.id.tv)
     TextView tv;
 
     @Override
@@ -35,9 +34,14 @@ public class MainActivity extends MvpActivity<MainPresenter> implements IMainVie
         titleBar.setRightText("测试", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(MainActivity.this, "测试", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void initViews(View view) {
+        tv = findViewById(R.id.tv);
     }
 
     public void loadItem(View view) {

@@ -115,7 +115,20 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     public abstract int getContentLayout();
 
     /**
-     * 3.初始化标题
+     * 3.1 绑定View
+     */
+    @Override
+    public void bindView(View contentView) {
+
+    }
+
+    @Override
+    public void unbindView() {
+
+    }
+
+    /**
+     * 3.2 初始化标题
      */
     @Override
     public void initTitle() {
@@ -194,5 +207,9 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
      */
     public void openKeyBord(final View view) {
         KeyBordUtils.openKeyBord(view);
+    }
+
+    public final <V extends View> V findViewById(int viewId) {
+        return mContentView.findViewById(viewId);
     }
 }

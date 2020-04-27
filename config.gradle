@@ -25,12 +25,6 @@ ext {
             // 三方库的引入============================================================================
             // EventBus
             eventbus           : "org.greenrobot:eventbus:3.1.1",
-            // butterKnife注入
-            butterKnife        : 'com.jakewharton:butterknife:10.2.1',
-            butterKnifeCompiler: 'com.jakewharton:butterknife-compiler:10.2.1',
-            // 阿里ARouter
-            arouterApi         : "com.alibaba:arouter-api:1.5.0",
-            arouterCompiler    : "com.alibaba:arouter-compiler:1.2.2",
             // 自己定义的库====================三方和系统写在上面========================================
             // 常用的工具类
             utils              : 'com.github.wenkency:utils:1.5.0',

@@ -55,4 +55,8 @@ public interface IBaseView {
 
 
     Activity getAppActivity();
+
+    void bindView(View contentView);
+
+    void unbindView();
 }

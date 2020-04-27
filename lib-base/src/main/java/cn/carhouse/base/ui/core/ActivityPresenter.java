@@ -6,27 +6,25 @@ import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.carhouse.base.ui.KeyBordUtils;
 
 public class ActivityPresenter<V extends IBaseView> {
     // 这个就是传递进来的Activity
     private V baseView;
-    private Unbinder mBind;
 
     public void attach(final V view, Bundle savedInstanceState, LayoutInflater inflater) {
         if (view == null) {
             return;
         }
         this.baseView = view;
+        // 绑定EventBus
+        registerEvent();
         // 1. 初始化数据
         baseView.initData(savedInstanceState);
         // 2. 设置ContentView
         View contentView = initContentView(inflater);
         baseView.setContentView(contentView);
-        // 3. 绑定View
-        bindView(contentView);
+        baseView.bindView(contentView);
         // 4. 初始化标题
         baseView.initTitle();
         // 5. 初始化View
@@ -44,25 +42,21 @@ public class ActivityPresenter<V extends IBaseView> {
 
 
     /**
-     * 绑定View
+     * 注册EventBus
      */
-    private void bindView(View view) {
+    private void registerEvent() {
         if (baseView.isNeedEvent()) {
             EventBus.getDefault().register(baseView);
         }
-        if (baseView.isNeedBind()) {
-            mBind = ButterKnife.bind(baseView, view);
-        }
     }
 
-    protected void unbindView() {
+    /**
+     * 解绑EventBus
+     */
+    private void unregisterEvent() {
         // 事件
         if (baseView.isNeedEvent()) {
             EventBus.getDefault().unregister(baseView);
-        }
-        if (mBind != null) {
-            mBind.unbind();
-            mBind = null;
         }
     }
 
@@ -75,7 +69,8 @@ public class ActivityPresenter<V extends IBaseView> {
 
     public void detach() {
         // 7. 解绑View
-        unbindView();
+        unregisterEvent();
+        baseView.unbindView();
         closeKeyBord();
         baseView = null;
     }

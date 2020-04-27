@@ -33,6 +33,4 @@ dependencies {
     //  通用标题栏
     api this.dependLibs.titlebar
     api this.dependLibs.eventbus
-    api this.dependLibs.arouterApi
-    api this.dependLibs.butterKnife
 }

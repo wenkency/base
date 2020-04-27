@@ -61,9 +61,21 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public abstract int getContentLayout();
+    /**
+     * 3.1 绑定View
+     */
+    @Override
+    public void bindView(View contentView) {
+
+    }
+
+    @Override
+    public void unbindView() {
+
+    }
 
     /**
-     * 3.初始化标题
+     * 3.2 初始化标题
      */
     @Override
     public void initTitle() {
