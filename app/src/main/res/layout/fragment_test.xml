@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="15dp"
-    tools:context=".MainActivity">
+    android:padding="15dp">
+
 
     <TextView
-        android:id="@+id/tv"
-        android:textSize="20dp"
-        android:text="我是文本"
-        android:textColor="@color/titleColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/tv_delete"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="#ddff0000"
+        android:gravity="center"
+        android:text="拖动到此处删除"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
 
-</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="#45678945"
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:overScrollMode="never" />
+</FrameLayout>

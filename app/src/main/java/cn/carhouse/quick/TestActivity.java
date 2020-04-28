@@ -2,15 +2,12 @@ package cn.carhouse.quick;
 
 import android.view.View;
 
-
 import cn.carhouse.base.ui.AppActivity;
 import cn.carhouse.base.ui.FragmentUtils;
 import cn.carhouse.titlebar.DefTitleBar;
 
 
 public class TestActivity extends AppActivity {
-    String path;
-
 
     @Override
     public int getContentLayout() {

@@ -44,4 +44,5 @@ dependencies {
     implementation this.dependLibs.imageloader
     implementation this.dependLibs.utils
     implementation this.dependLibs.retrofit
+    implementation this.dependLibs.quickadapter
 }

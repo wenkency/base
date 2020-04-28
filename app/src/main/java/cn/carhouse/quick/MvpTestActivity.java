@@ -15,14 +15,14 @@ import cn.carhouse.quick.view.IMainView;
 import cn.carhouse.titlebar.DefTitleBar;
 
 
-public class MainActivity extends MvpActivity<MainPresenter> implements IMainView {
+public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMainView {
 
 
     TextView tv;
 
     @Override
     public int getContentLayout() {
-        return R.layout.activity_test;
+        return R.layout.activity_mvp_test;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements IMainVie
         titleBar.setRightText("测试", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "测试", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MvpTestActivity.this, "测试", Toast.LENGTH_SHORT).show();
             }
         });
     }
