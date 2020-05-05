@@ -9,6 +9,8 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
+
 /**
  * 键盘工具类
  * 1. 打开键盘
@@ -27,6 +29,23 @@ public class KeyBordUtils {
         if (view instanceof TextView) {
             InputMethodManager mInputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             mInputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
+        }
+    }
+
+    public static void destroyKeyBord(Activity activity, String attr) {
+        try {
+            if (activity == null) {
+                return;
+            }
+            InputMethodManager im = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            Field mAttrField = InputMethodManager.class.getDeclaredField(attr);
+            View mAttrView = (View) mAttrField.get(im);
+            if (mAttrView != null && mAttrView.getContext() == activity) {
+                mAttrField.set(im, null);
+            }
+            //mNextServedView, mServedView
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 

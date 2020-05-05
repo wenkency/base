@@ -65,6 +65,8 @@ public class ActivityPresenter<V extends IBaseView> {
      */
     private void closeKeyBord() {
         KeyBordUtils.closeKeyBord(baseView.getAppActivity());
+        KeyBordUtils.destroyKeyBord(baseView.getAppActivity(), "mNextServedView");
+        KeyBordUtils.destroyKeyBord(baseView.getAppActivity(), "mServedView");
     }
 
     public void detach() {

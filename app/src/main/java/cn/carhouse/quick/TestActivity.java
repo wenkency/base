@@ -1,6 +1,10 @@
 package cn.carhouse.quick;
 
+import android.content.Context;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
+import java.lang.reflect.Field;
 
 import cn.carhouse.base.ui.AppActivity;
 import cn.carhouse.base.ui.FragmentUtils;
