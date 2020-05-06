@@ -34,6 +34,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
             activityPresenter = null;
         }
         mContentView = null;
+        // 移除当前Activity下的所有的Fragment
+        FragmentUtils.removeAllFragments(getSupportFragmentManager());
         super.onDestroy();
     }
 
@@ -61,6 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public abstract int getContentLayout();
+
     /**
      * 3.1 绑定View
      */
