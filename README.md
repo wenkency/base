@@ -5,53 +5,15 @@
 ### 引入
 
 ```
-buildscript {
 
-    dependencies {
-        ...
-        // 阿里的ARouter
-        classpath "com.alibaba:arouter-register:1.0.2"
-        // butterKnife
-        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
-    }
-}
 allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	}
-
-// 阿里的ARouter
-apply plugin: 'com.alibaba.arouter'
-// butterKnife
-apply plugin: 'com.jakewharton.butterknife'
-
-android {
-    ...
-    defaultConfig {
-        ...
-        // 阿里的ARouter API注解编译用
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
-
-    }
-    ...
-    // 解编配置
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
-
-implementation "com.github.wenkency:base:2.0.0"
-// 阿里ARouter
-annotationProcessor this.dependLibs.arouterCompiler
-annotationProcessor this.dependLibs.butterKnifeCompiler
+implementation "com.github.wenkency:base:3.0.0"
 
 
 
@@ -83,20 +45,14 @@ annotationProcessor this.dependLibs.butterKnifeCompiler
     api this.dependLibs.titlebar
     api this.dependLibs.utils
     api this.dependLibs.eventbus
-    api this.dependLibs.arouterApi
-    api this.dependLibs.butterKnife
 ```
 
 ### 使用方式
 
 ```
-@Route(path = "/b/videos")
 public class TestActivity extends AppActivity {
-    // 阿里路由注入
-    @Autowired
+
     String path;
-    // ButterKnife注入
-    @BindView(R.id.tv)
     TextView tv;
 
 

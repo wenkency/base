@@ -21,7 +21,7 @@ public class KeyBordUtils {
     /**
      * 关闭软键盘
      */
-    public static void closeKeyBord(Activity activity) {
+    public final static void closeKeyBord(Activity activity) {
         if (activity == null) {
             return;
         }
@@ -32,27 +32,44 @@ public class KeyBordUtils {
         }
     }
 
-    public static void destroyKeyBord(Activity activity, String attr) {
-        try {
-            if (activity == null) {
-                return;
+    public final static void fixInputMethodManagerLeak(Activity activity) {
+        if (activity == null) {
+            return;
+        }
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm == null) {
+            return;
+        }
+        String[] arr = new String[]{"mCurRootView", "mServedView", "mNextServedView"};
+        Field field = null;
+        Object objGet = null;
+        for (int i = 0; i < arr.length; i++) {
+            try {
+                String param = arr[i];
+                field = imm.getClass().getDeclaredField(param);
+                if (field.isAccessible() == false) {
+                    field.setAccessible(true);
+                }
+                objGet = field.get(imm);
+                if (objGet != null && objGet instanceof View) {
+                    View view = (View) objGet;
+                    // 被InputMethodManager持有引用的context是想要目标销毁的
+                    if (view.getContext() == activity) {
+                        field.set(imm, null); // 置空,破坏掉path to gc节点
+                    } else {
+                        break;
+                    }
+                }
+            } catch (Throwable e) {
+                e.printStackTrace();
             }
-            InputMethodManager im = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            Field mAttrField = InputMethodManager.class.getDeclaredField(attr);
-            View mAttrView = (View) mAttrField.get(im);
-            if (mAttrView != null && mAttrView.getContext() == activity) {
-                mAttrField.set(im, null);
-            }
-            //mNextServedView, mServedView
-        } catch (Throwable e) {
-            e.printStackTrace();
         }
     }
 
     /**
      * 关闭软键盘
      */
-    public static void closeKeyBord(View view) {
+    public final static void closeKeyBord(View view) {
         if (view == null || view.getContext() == null) {
             return;
         }
@@ -63,7 +80,7 @@ public class KeyBordUtils {
     /**
      * 打开软键盘
      */
-    public static void openKeyBord(final View view) {
+    public final static void openKeyBord(final View view) {
         try {
             if (view != null) {
                 view.postDelayed(new Runnable() {
@@ -87,7 +104,7 @@ public class KeyBordUtils {
      * @param activity
      * @param keyBoardListener
      */
-    public static void attach(final Activity activity, final KeyBoardListener keyBoardListener) {
+    public final static void attach(final Activity activity, final KeyBoardListener keyBoardListener) {
         final ViewGroup contentView = activity.findViewById(android.R.id.content);
         final int statusBarHeight = getStatusHeight(activity);
         contentView.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -147,7 +164,7 @@ public class KeyBordUtils {
     /**
      * 获得状态栏的高度
      */
-    private static int getStatusHeight(Context context) {
+    private final static int getStatusHeight(Context context) {
         int statusHeight = -1;
         try {
             Class clazz = Class.forName("com.android.internal.R$dimen");

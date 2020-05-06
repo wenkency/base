@@ -65,8 +65,8 @@ public class ActivityPresenter<V extends IBaseView> {
      */
     private void closeKeyBord() {
         KeyBordUtils.closeKeyBord(baseView.getAppActivity());
-        KeyBordUtils.destroyKeyBord(baseView.getAppActivity(), "mNextServedView");
-        KeyBordUtils.destroyKeyBord(baseView.getAppActivity(), "mServedView");
+        // 优化键盘内存漏泄
+        KeyBordUtils.fixInputMethodManagerLeak(baseView.getAppActivity());
     }
 
     public void detach() {
