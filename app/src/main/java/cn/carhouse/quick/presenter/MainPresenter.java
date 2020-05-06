@@ -45,6 +45,7 @@ public class MainPresenter extends BasePresenter<MainModel, IMainView> implement
 
     /**
      * View的显示逻辑
+     * 用EventBusn发送数据
      */
     @Subscribe
     @Override
@@ -60,5 +61,8 @@ public class MainPresenter extends BasePresenter<MainModel, IMainView> implement
         RetrofitPresenter.get(activity, "get", "id", "1001", callback);
     }
 
-
+    @Override
+    public boolean isUseEvent() {
+        return true;
+    }
 }

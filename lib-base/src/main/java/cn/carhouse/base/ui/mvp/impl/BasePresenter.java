@@ -56,8 +56,10 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        EventBus.getDefault().register(this);
+        // 注册EventBus
+        if (isUseEvent()) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -69,13 +71,11 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         if (mModel != null) {
             mModel = null;
         }
-        EventBus.getDefault().unregister(this);
+        if (isUseEvent()) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
-    @Subscribe
-    public void onEvent(BasePresenter basePresenter) {
-
-    }
 
     @Override
     public V getView() {
@@ -95,4 +95,13 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         return mModel;
     }
 
+    @Override
+    public boolean isUseEvent() {
+        return false;
+    }
+
+    @Subscribe
+    public void onEvent(BasePresenter basePresenter) {
+
+    }
 }

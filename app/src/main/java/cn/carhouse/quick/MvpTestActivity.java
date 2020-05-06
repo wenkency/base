@@ -45,7 +45,6 @@ public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMain
     }
 
     public void loadItem(View view) {
-
         //  getPresenter().loadItem();
 
 

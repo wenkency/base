@@ -33,4 +33,11 @@ public interface IPresenter<M extends IModel, V extends IView> {
      * 获取Model
      */
     M getModel();
+
+    /**
+     * 是否注册EventBus发送数据
+     *
+     * @return
+     */
+    boolean isUseEvent();
 }
