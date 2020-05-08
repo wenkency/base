@@ -13,7 +13,7 @@ allprojects {
 		}
 }
 
-implementation "com.github.wenkency:base:3.0.0"
+implementation "com.github.wenkency:base:3.0.1"
 
 
 
@@ -30,7 +30,6 @@ implementation "com.github.wenkency:base:3.0.0"
 </application>
 
  // Application初始化
- ARouter.init(this);
  // 测试用，实际用自己开发的页面
  AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
  AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
