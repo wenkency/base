@@ -16,19 +16,6 @@ allprojects {
 implementation "com.github.wenkency:base:3.0.1"
 
 
-
-<application
-        ...>
-       ...
-
-         <!--清单配置-->
-        <provider
-            android:name="cn.carhouse.utils.provider.InitProvider"
-            android:authorities="${applicationId}.BaseProvider"
-            android:exported="false"
-            android:multiprocess="true" />
-</application>
-
  // Application初始化
  // 测试用，实际用自己开发的页面
  AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
