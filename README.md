@@ -29,7 +29,6 @@ implementation "com.github.wenkency:base:3.0.1"
 ```android
     //  通用标题栏
     api this.dependLibs.titlebar
-    api this.dependLibs.utils
     api this.dependLibs.eventbus
 ```
 
