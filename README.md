@@ -14,7 +14,7 @@ allprojects {
 		}
 }
 
-implementation "com.github.wenkency:base:3.1.0"
+implementation "com.github.wenkency:base:3.2.0"
 implementation "org.greenrobot:eventbus:3.1.1"
 implementation "com.github.wenkency:titlebar:1.6.0"
 
