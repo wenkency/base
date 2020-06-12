@@ -10,9 +10,10 @@ import com.lven.retrofit.callback.OnCallback;
 import java.util.List;
 
 import cn.carhouse.base.ui.mvp.MvpActivity;
-import cn.carhouse.quick.presenter.MainPresenter;
-import cn.carhouse.quick.view.IMainView;
+import cn.carhouse.quick.mvptest.presenter.MainPresenter;
+import cn.carhouse.quick.mvptest.view.IMainView;
 import cn.carhouse.titlebar.DefTitleBar;
+import cn.carhouse.utils.TSUtils;
 
 
 public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMainView {
@@ -52,6 +53,11 @@ public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMain
             @Override
             public void onSuccess(String response) {
                 showItem(response);
+            }
+
+            @Override
+            public void onError(int code, String message) {
+                TSUtils.show(message);
             }
         });
     }

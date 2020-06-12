@@ -14,7 +14,9 @@ allprojects {
 		}
 }
 
-implementation "com.github.wenkency:base:3.0.1"
+implementation "com.github.wenkency:base:3.1.0"
+implementation "org.greenrobot:eventbus:3.1.1"
+implementation "com.github.wenkency:titlebar:1.6.0"
 
 
  // Application初始化
@@ -24,13 +26,6 @@ implementation "com.github.wenkency:base:3.0.1"
  AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
  AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
 
-```
-
-### 已依赖
-```android
-    //  通用标题栏
-    api this.dependLibs.titlebar
-    api this.dependLibs.eventbus
 ```
 
 ### 使用方式

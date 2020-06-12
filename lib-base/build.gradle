@@ -29,8 +29,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     /*导入依赖*/
-    implementation this.dependLibs.appcompat
+    compileOnly this.dependLibs.appcompat
     //  通用标题栏
-    api this.dependLibs.titlebar
-    api this.dependLibs.eventbus
+    compileOnly this.dependLibs.titlebar
+    compileOnly this.dependLibs.eventbus
 }

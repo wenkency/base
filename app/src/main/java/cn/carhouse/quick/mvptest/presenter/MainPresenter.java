@@ -1,4 +1,4 @@
-package cn.carhouse.quick.presenter;
+package cn.carhouse.quick.mvptest.presenter;
 
 import android.app.Activity;
 
@@ -11,8 +11,8 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 
 import cn.carhouse.base.ui.mvp.impl.BasePresenter;
-import cn.carhouse.quick.model.MainModel;
-import cn.carhouse.quick.view.IMainView;
+import cn.carhouse.quick.mvptest.model.MainModel;
+import cn.carhouse.quick.mvptest.view.IMainView;
 
 public class MainPresenter extends BasePresenter<MainModel, IMainView> implements IMainView {
 

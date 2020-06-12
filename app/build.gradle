@@ -51,4 +51,7 @@ dependencies {
     implementation this.dependLibs.utils
     implementation this.dependLibs.retrofit
     implementation this.dependLibs.quickadapter
+    implementation this.dependLibs.titlebar
+    implementation this.dependLibs.eventbus
+
 }

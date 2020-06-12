@@ -23,9 +23,4 @@ public class TestActivity extends AppActivity {
     public void initViews(View view) {
         FragmentUtils.replaceFragment(getSupportFragmentManager(), R.id.fl_fragment, new TestFragment());
     }
-
-    @Override
-    public void initNet() {
-
-    }
 }

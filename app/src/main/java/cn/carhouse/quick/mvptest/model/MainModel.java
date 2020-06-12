@@ -1,4 +1,4 @@
-package cn.carhouse.quick.model;
+package cn.carhouse.quick.mvptest.model;
 
 import com.lven.retrofit.RetrofitPresenter;
 import com.lven.retrofit.callback.IOnCallback;

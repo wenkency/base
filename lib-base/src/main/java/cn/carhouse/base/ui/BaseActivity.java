@@ -20,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     private View mContentView;
     private ActivityPresenter<IBaseView> activityPresenter;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

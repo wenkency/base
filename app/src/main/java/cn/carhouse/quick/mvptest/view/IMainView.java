@@ -1,4 +1,4 @@
-package cn.carhouse.quick.view;
+package cn.carhouse.quick.mvptest.view;
 
 import java.util.List;
 
