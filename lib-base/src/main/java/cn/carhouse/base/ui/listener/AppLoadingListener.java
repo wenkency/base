@@ -31,6 +31,13 @@ public class AppLoadingListener extends OnLoadingListener {
     }
 
     @Override
+    public void setEmptyEvent(View emptyView) {
+        if (listener != null) {
+            listener.setViewClick(LoadState.EMPTY, emptyView);
+        }
+    }
+
+    @Override
     public int generateEmptyLayoutId() {
         int emptyLayoutId = -1;
         if (listener != null) {
@@ -42,12 +49,6 @@ public class AppLoadingListener extends OnLoadingListener {
         return super.generateEmptyLayoutId();
     }
 
-    @Override
-    public void setEmptyEvent(View emptyView) {
-        if (listener != null) {
-            listener.setViewClick(LoadState.EMPTY, emptyView);
-        }
-    }
 
     @Override
     public void onLoadingChanged(LoadState state, LoadingLayout loadingLayout) {

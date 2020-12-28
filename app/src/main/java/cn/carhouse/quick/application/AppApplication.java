@@ -11,10 +11,10 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
         // 测试用，实际用自己开发的页面
-        AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
-        AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
-        AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
-        AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
+        AppConfig.setLoadingLayoutId(R.layout.pager_loading);
+        AppConfig.setRetryLayoutId(R.layout.pager_retry);
+        AppConfig.setDataErrorLayoutId(R.layout.pager_data_error);
+        AppConfig.setEmptyLayoutId(R.layout.pager_empty);
         // 设置标题颜色
         AppConfig.setTitleBackgroundColor(this.getResources().getColor(R.color.colorPrimaryDark));
 

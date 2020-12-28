@@ -29,7 +29,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     /*导入依赖*/
-    implementation this.dependLibs.appcompat
+    compileOnly this.dependLibs.appcompat
     //  通用标题栏
     compileOnly this.dependLibs.titlebar
     compileOnly this.dependLibs.eventbus

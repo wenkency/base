@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fl_fragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/tv"
@@ -10,19 +11,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="我是文本"
-        android:textColor="@color/titleColor"
+        android:textColor="#ff0000"
         android:textSize="20dp" />
 
     <Button
-        android:onClick="loadItem"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:onClick="loadItem"
         android:text="加载单个条目" />
 
     <Button
-        android:onClick="loadList"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_gravity="right"
+        android:onClick="loadList"
         android:text="加载多个条目" />
 </FrameLayout>

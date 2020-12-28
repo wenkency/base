@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 
@@ -248,11 +249,15 @@ public class LoadingLayout extends FrameLayout {
         View contentView = mContentView;
         if (contentView != null) {
             Log.w(TAG, "you have already set a retry view and would be instead of this new one.");
+            removeView(contentView);
         }
-        removeView(contentView);
-        addView(view);
+        addView(view, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mContentView = view;
         return mContentView;
+    }
+
+    public void onlySetContentView(View view) {
+        mContentView = view;
     }
 
     public View getRetryView() {

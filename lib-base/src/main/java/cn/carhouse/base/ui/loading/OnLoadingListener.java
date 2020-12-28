@@ -2,6 +2,9 @@ package cn.carhouse.base.ui.loading;
 
 import android.view.View;
 
+/**
+ * 加载监听
+ */
 public abstract class OnLoadingListener {
     public abstract void setRetryEvent(View retryView);
 

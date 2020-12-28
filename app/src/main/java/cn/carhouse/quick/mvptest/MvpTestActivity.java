@@ -1,4 +1,4 @@
-package cn.carhouse.quick;
+package cn.carhouse.quick.mvptest;
 
 import android.graphics.Color;
 import android.view.View;
@@ -10,6 +10,9 @@ import com.lven.retrofit.callback.OnCallback;
 import java.util.List;
 
 import cn.carhouse.base.ui.mvp.MvpActivity;
+import cn.carhouse.base.ui.mvp.inject.InjectPresenter;
+import cn.carhouse.quick.R;
+import cn.carhouse.quick.mvptest.presenter.LoginPresenter;
 import cn.carhouse.quick.mvptest.presenter.MainPresenter;
 import cn.carhouse.quick.mvptest.view.IMainView;
 import cn.carhouse.titlebar.DefTitleBar;
@@ -20,6 +23,9 @@ public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMain
 
 
     TextView tv;
+
+    @InjectPresenter
+    private LoginPresenter loginPresenter;
 
     @Override
     public int getContentLayout() {

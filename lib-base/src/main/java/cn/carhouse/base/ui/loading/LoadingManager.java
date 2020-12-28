@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.fragment.app.Fragment;
 
@@ -72,27 +73,32 @@ public class LoadingManager {
         } else {
             oldContent = contentParent.getChildAt(0);
         }
-        contentParent.removeView(oldContent);
 
-        LoadingLayout loadingAndRetryLayout = new LoadingLayout(context);
+
+        LoadingLayout loadingLayout = new LoadingLayout(context);
 
 
         // setup loading,retry,empty layout
-        setupLoadingLayout(listener, loadingAndRetryLayout);
-        setupRetryLayout(listener, loadingAndRetryLayout);
-        setupDataErrorLayout(listener, loadingAndRetryLayout);
-        setupEmptyLayout(listener, loadingAndRetryLayout);
-        //callback
-        listener.setRetryEvent(loadingAndRetryLayout.getRetryView());
-        listener.setDataErrorEvent(loadingAndRetryLayout.getDataErrorView());
-        listener.setLoadingEvent(loadingAndRetryLayout.getLoadingView());
-        listener.setEmptyEvent(loadingAndRetryLayout.getEmptyView());
+        setupLoadingLayout(listener, loadingLayout);
+        setupRetryLayout(listener, loadingLayout);
+        setupDataErrorLayout(listener, loadingLayout);
+        setupEmptyLayout(listener, loadingLayout);
+        // callback
+        listener.setRetryEvent(loadingLayout.getRetryView());
+        listener.setDataErrorEvent(loadingLayout.getDataErrorView());
+        listener.setLoadingEvent(loadingLayout.getLoadingView());
+        listener.setEmptyEvent(loadingLayout.getEmptyView());
 
         //setup content layout
         ViewGroup.LayoutParams lp = oldContent.getLayoutParams();
-        contentParent.addView(loadingAndRetryLayout, index, lp);
-        loadingAndRetryLayout.setContentView(oldContent);
-        mLoadingLayout = loadingAndRetryLayout;
+        // 1. 移除旧的
+        contentParent.removeView(oldContent);
+        // 旧的添加到自定义布局
+        loadingLayout.setContentView(oldContent);
+        // 2. 添加新的到原来位置
+        contentParent.addView(loadingLayout, index, lp);
+
+        mLoadingLayout = loadingLayout;
         // 设置监听
         mLoadingLayout.setOnLoadingListener(listener);
 
