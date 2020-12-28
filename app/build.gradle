@@ -46,6 +46,7 @@ dependencies {
     implementation project(path: ':lib-base')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation this.dependLibs.appcompat
+    implementation this.dependLibs.constraintlayout
     implementation this.dependLibs.recyclerview
     implementation this.dependLibs.imageloader
     implementation this.dependLibs.utils

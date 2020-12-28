@@ -30,6 +30,7 @@ dependencies {
 
     /*导入依赖*/
     compileOnly this.dependLibs.appcompat
+    compileOnly this.dependLibs.constraintlayout
     //  通用标题栏
     compileOnly this.dependLibs.titlebar
     compileOnly this.dependLibs.eventbus

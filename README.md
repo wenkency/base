@@ -17,15 +17,18 @@ allprojects {
 implementation "com.github.wenkency:base:3.4.0"
 implementation "org.greenrobot:eventbus:3.1.1"
 // https://github.com/wenkency/titlebar
-implementation "com.github.wenkency:titlebar:1.6.0"
+implementation "com.github.wenkency:titlebar:1.8.0"
 
+// 这两个是Android依赖包，项目有用到。
+// implementation this.dependLibs.appcompat
+// implementation this.dependLibs.constraintlayout
 
- // Application初始化
- // 测试用，实际用自己开发的页面
- AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
- AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
- AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
- AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
+// Application初始化
+// 测试用，实际用自己开发的页面
+AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
+AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
+AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
+AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
 
 ```
 

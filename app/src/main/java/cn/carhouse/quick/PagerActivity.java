@@ -1,5 +1,6 @@
 package cn.carhouse.quick;
 
+import android.content.Intent;
 import android.view.View;
 
 import cn.carhouse.base.ui.AppActivity;
@@ -19,6 +20,10 @@ public class PagerActivity extends AppActivity {
     @Override
     public Object getLoadingParentView() {
         return findViewById(R.id.fl_load_pager);
+    }
+
+    public void test(View view) {
+        startActivity(new Intent(this, TestActivity.class));
     }
 
     public void loading(View view) {
