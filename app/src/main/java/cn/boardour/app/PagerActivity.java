@@ -6,6 +6,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import cn.boardour.app.mvptest.MvpTestActivity;
+import cn.boardour.base.alert.QuickBuilder;
+import cn.boardour.base.alert.QuickDialog;
 import cn.boardour.base.ui.AppActivity;
 import cn.boardour.base.ui.titlebar.DefTitleBar;
 
@@ -57,6 +59,12 @@ public class PagerActivity extends AppActivity {
 
     public void content(View view) {
         showContent();
+
+        final QuickDialog popup = new QuickBuilder(this)
+                .setContentView(R.layout.dialog_window)
+                .setWidthScale(0.8f)
+                .build();
+        popup.show();
     }
 
     @Override

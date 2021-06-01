@@ -32,4 +32,26 @@
         <item name="android:taskCloseEnterAnimation">@anim/activity_back</item>
         <item name="android:taskCloseExitAnimation">@anim/activity_finish</item>
     </style>
+
+
+    <!--自字义AlertDialog的主题-->
+    <style name="QuickDialogTheme" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item><!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item><!-- 自己想要的背景 -->
+        <item name="android:backgroundDimEnabled">true</item><!-- 模糊 -->
+    </style>
+    <!--从下弹出来的基本动画-->
+    <style name="AnimDialogBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_anim_slide_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_anim_slide_out</item>
+    </style>
+
+    <style name="AnimDialogTop" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_anim_slide_top_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_anim_slide_top_out</item>
+    </style>
+    <!--自字义AlertDialog的主题-->
 </resources>

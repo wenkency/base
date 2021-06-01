@@ -7,7 +7,6 @@ import android.os.Build;
 
 import androidx.collection.SimpleArrayMap;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;

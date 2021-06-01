@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import cn.boardour.base.ui.titlebar.utils.TitleBarUtil;
-import cn.carhouse.base.R;
+import cn.boardour.base.R;
 
 /**
  * 通用的标题栏

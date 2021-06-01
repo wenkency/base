@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".PagerActivity"
+            android:name="cn.boardour.app.PagerActivity"
             android:hardwareAccelerated="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
 
 
         <activity android:name="cn.boardour.app.TestActivity" />
-        <activity android:name=".mvptest.MvpTestActivity" />
+        <activity android:name="cn.boardour.app.mvptest.MvpTestActivity" />
     </application>
 
 </manifest>

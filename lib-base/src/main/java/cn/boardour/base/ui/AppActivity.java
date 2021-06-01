@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import cn.boardour.base.R;
 import cn.boardour.base.ui.loading.LoadState;
 import cn.boardour.base.ui.loading.LoadingManager;
 import cn.boardour.base.ui.loading.OnLoadingListener;
@@ -12,7 +13,6 @@ import cn.boardour.base.ui.loading.listener.AppLoadingListener;
 import cn.boardour.base.ui.loading.listener.AppPagerListener;
 import cn.boardour.base.ui.titlebar.DefTitleBar;
 import cn.boardour.base.ui.titlebar.DefTitleBuilder;
-import cn.carhouse.base.R;
 
 /**
  * ================================================================

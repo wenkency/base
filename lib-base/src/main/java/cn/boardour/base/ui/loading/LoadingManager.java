@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import cn.carhouse.base.R;
+import cn.boardour.base.R;
 
 /**
  * 加载类
