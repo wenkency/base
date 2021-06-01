@@ -71,3 +71,12 @@ public class TestActivity extends AppActivity {
 ### 运行结果
 
 <img src="screenshot/image.jpg" width="360px"/>
+
+### 使用参考
+
+// 弹窗使用参考
+https://github.com/wenkency/quickalert.git
+// RecyclerView adapter使用参考
+https://github.com/wenkency/quickadapter.git
+// 图片加载使用参考
+https://github.com/wenkency/imageloader.git
