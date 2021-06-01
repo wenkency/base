@@ -1,9 +1,5 @@
 apply plugin: 'com.android.library'
 
-// 远程仓库
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.wenkency'
-
 android {
     compileSdkVersion this.app.compileSdkVersion
     buildToolsVersion this.app.buildToolsVersion
@@ -11,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion this.app.minSdkVersion
         targetSdkVersion this.app.targetSdkVersion
-        versionCode this.app.versionCode
-        versionName this.app.versionName
+        versionCode this.app.baseVersionCode
+        versionName this.app.baseVersionName
     }
 
     buildTypes {
@@ -22,7 +18,6 @@ android {
         }
     }
 
-
 }
 
 dependencies {
@@ -31,7 +26,7 @@ dependencies {
     /*导入依赖*/
     compileOnly this.dependLibs.appcompat
     compileOnly this.dependLibs.constraintlayout
-    //  通用标题栏
-    compileOnly this.dependLibs.titlebar
+    compileOnly this.dependLibs.recyclerview
+    compileOnly this.dependLibs.imageloader
     compileOnly this.dependLibs.eventbus
 }

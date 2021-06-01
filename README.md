@@ -13,11 +13,13 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 }
-
-implementation "com.github.wenkency:base:3.4.0"
-implementation "org.greenrobot:eventbus:3.1.1"
-// https://github.com/wenkency/titlebar
-implementation "com.github.wenkency:titlebar:1.8.0"
+// eventbus
+implementation "org.greenrobot:eventbus:3.2.0"
+// 图片加载
+implementation "com.github.wenkency:imageloader:2.7.0"
+implementation "com.github.bumptech.glide:glide:4.12.0"
+annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"
+// 图片加载
 
 // 这两个是Android依赖包，项目有用到。
 // implementation this.dependLibs.appcompat

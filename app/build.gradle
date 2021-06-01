@@ -48,11 +48,12 @@ dependencies {
     implementation this.dependLibs.appcompat
     implementation this.dependLibs.constraintlayout
     implementation this.dependLibs.recyclerview
-    implementation this.dependLibs.imageloader
-    implementation this.dependLibs.utils
     implementation this.dependLibs.retrofit
-    implementation this.dependLibs.quickadapter
-    implementation this.dependLibs.titlebar
     implementation this.dependLibs.eventbus
+    /*图片加载*/
+    implementation this.dependLibs.imageloader
+    implementation this.dependLibs.glide
+    annotationProcessor this.dependLibs.glideCompiler
+    /*图片加载*/
 
 }

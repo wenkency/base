@@ -26,4 +26,11 @@
         android:layout_gravity="right"
         android:onClick="loadList"
         android:text="加载多个条目" />
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="20dp" />
 </FrameLayout>
