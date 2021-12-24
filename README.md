@@ -1,4 +1,5 @@
 # base
+
 1. 项目的基本库，为快速开发项目提供基础。
 2. AppConfig用这个类来配置通用的配置。
 3. 支持MVP写法。
@@ -13,27 +14,33 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 }
+// 基于标题栏、加载页面、eventbus，这三个必须依赖
+implementation 'com.github.wenkency:base:3.5.0'
 // eventbus
 implementation "org.greenrobot:eventbus:3.2.0"
-// 图片加载
-implementation "com.github.wenkency:imageloader:2.7.0"
-implementation "com.github.bumptech.glide:glide:4.12.0"
-annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"
-// 图片加载
+// 加载页面
+implementation 'com.github.wenkency:loading:1.3.0'
+// 标题栏
+implementation 'com.github.wenkency:titlebar:1.8.0'
 
-// 这两个是Android依赖包，项目有用到。
-// implementation this.dependLibs.appcompat
-// implementation this.dependLibs.constraintlayout
-
+```
+### 加载相关
+// https://github.com/wenkency/loading
+```
 // Application初始化
 // 测试用，实际用自己开发的页面
 AppConfig.setLoadingLayoutId(R.layout.app_pager_loading);
 AppConfig.setRetryLayoutId(R.layout.app_pager_loading);
 AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
 AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
-
 ```
-
+### 标题相关
+// https://github.com/wenkency/titlebar
+```
+// 设置标题颜色
+AppConfig.setTitleBackgroundColor(this.getResources().getColor(R.color.colorAccent));
+AppConfig.setTitleBackImage(R.drawable.ic_title_back);
+```
 ### 使用方式
 
 ```

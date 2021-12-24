@@ -22,11 +22,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     /*导入依赖*/
-    compileOnly this.dependLibs.appcompat
-    compileOnly this.dependLibs.constraintlayout
-    compileOnly this.dependLibs.recyclerview
-    compileOnly this.dependLibs.imageloader
-    compileOnly this.dependLibs.eventbus
+    compileOnly "androidx.appcompat:appcompat:1.3.1"
+    compileOnly "androidx.constraintlayout:constraintlayout:2.1.0"
+    compileOnly "androidx.recyclerview:recyclerview:1.2.0"
+    // eventbus
+    compileOnly "org.greenrobot:eventbus:3.2.0"
+    // 加载页面
+    compileOnly 'com.github.wenkency:loading:1.3.0'
+    // 标题栏
+    compileOnly 'com.github.wenkency:titlebar:1.8.0'
 }
