@@ -16,9 +16,9 @@ import java.util.List;
 
 import cn.carhouse.adapter.XQuickAdapter;
 import cn.carhouse.adapter.XQuickViewHolder;
-import cn.carhouse.base.ui.AppFragment;
-import cn.carhouse.base.utils.LG;
-import cn.carhouse.base.utils.TSUtils;
+import cn.base.ui.AppFragment;
+import cn.base.utils.LG;
+import cn.base.utils.TSUtils;
 
 public class TestFragment extends AppFragment {
     private RecyclerView recyclerView;

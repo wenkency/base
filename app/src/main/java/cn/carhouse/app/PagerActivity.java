@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import cn.carhouse.alert.QuickBuilder;
 import cn.carhouse.alert.QuickDialog;
 import cn.carhouse.app.mvptest.MvpTestActivity;
-import cn.carhouse.base.ui.AppActivity;
+import cn.base.ui.AppActivity;
 import cn.carhouse.titlebar.DefTitleBar;
 
 

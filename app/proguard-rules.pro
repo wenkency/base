@@ -33,5 +33,5 @@
 
 ### 注解不能被混淆
 -keepclassmembers class * {
-    @cn.carhouse.base.ui.mvp.inject.InjectPresenter <fields>;
+    @cn.base.ui.mvp.inject.InjectPresenter <fields>;
 }

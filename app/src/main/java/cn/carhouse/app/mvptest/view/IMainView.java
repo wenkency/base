@@ -2,7 +2,7 @@ package cn.carhouse.app.mvptest.view;
 
 import java.util.List;
 
-import cn.carhouse.base.ui.mvp.core.IView;
+import cn.base.ui.mvp.core.IView;
 
 public interface IMainView extends IView {
 

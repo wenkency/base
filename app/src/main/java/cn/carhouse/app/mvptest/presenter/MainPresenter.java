@@ -10,7 +10,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
-import cn.carhouse.base.ui.mvp.impl.BasePresenter;
+import cn.base.ui.mvp.impl.BasePresenter;
 import cn.carhouse.app.mvptest.model.MainModel;
 import cn.carhouse.app.mvptest.view.IMainView;
 

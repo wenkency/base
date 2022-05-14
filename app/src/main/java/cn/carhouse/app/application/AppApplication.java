@@ -6,7 +6,7 @@ import com.lven.retrofit.api.RestConfig;
 
 import cn.carhouse.app.BuildConfig;
 import cn.carhouse.app.R;
-import cn.carhouse.base.ui.AppConfig;
+import cn.base.ui.AppConfig;
 
 public class AppApplication extends Application {
     @Override

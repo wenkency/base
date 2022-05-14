@@ -8,7 +8,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.carhouse.base.ui.mvp.core.IModel;
+import cn.base.ui.mvp.core.IModel;
 
 public class MainModel implements IModel {
     public void loadList() {

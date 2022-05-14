@@ -2,8 +2,8 @@ package cn.carhouse.app;
 
 import android.view.View;
 
-import cn.carhouse.base.ui.AppActivity;
-import cn.carhouse.base.ui.FragmentUtils;
+import cn.base.ui.AppActivity;
+import cn.base.ui.FragmentUtils;
 import cn.carhouse.titlebar.DefTitleBar;
 
 
