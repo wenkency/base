@@ -25,7 +25,7 @@ implementation 'com.github.wenkency:titlebar:1.8.0'
 
 ```
 ### 加载相关
-// https://github.com/wenkency/loading
+*  https://github.com/wenkency/loading
 ```
 // Application初始化
 // 测试用，实际用自己开发的页面
@@ -35,7 +35,7 @@ AppConfig.setDataErrorLayoutId(R.layout.app_pager_loading);
 AppConfig.setEmptyLayoutId(R.layout.app_pager_loading);
 ```
 ### 标题相关
-// https://github.com/wenkency/titlebar
+* https://github.com/wenkency/titlebar
 ```
 // 设置标题颜色
 AppConfig.setTitleBackgroundColor(this.getResources().getColor(R.color.colorAccent));
@@ -81,11 +81,11 @@ public class TestActivity extends AppActivity {
 
 ### 使用参考
 
-// 弹窗使用参考
+* 弹窗使用参考
 https://github.com/wenkency/quickalert.git
-// RecyclerView adapter使用参考
+* RecyclerView adapter使用参考
 https://github.com/wenkency/quickadapter.git
-// 图片加载使用参考
+* 图片加载使用参考
 https://github.com/wenkency/imageloader.git
 
 
