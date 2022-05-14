@@ -67,8 +67,8 @@ public class ActivityPresenter<V extends IBaseView> {
     private void closeKeyBord() {
         if (baseView != null) {
             KeyBordUtils.closeKeyBord(baseView.getAppActivity());
-            // 优化键盘内存漏泄
-            KeyBordUtils.fixInputMethodManagerLeak(baseView.getAppActivity());
+            // 优化键盘内存漏泄 ,系统已经处理
+            // KeyBordUtils.fixInputMethodManagerLeak(baseView.getAppActivity());
         }
     }
 

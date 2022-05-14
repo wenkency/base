@@ -30,3 +30,8 @@
 -keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
     <init>(java.lang.Throwable);
 }
+
+### 注解不能被混淆
+-keepclassmembers class * {
+    @cn.carhouse.base.ui.mvp.inject.InjectPresenter <fields>;
+}

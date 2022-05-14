@@ -2,7 +2,9 @@ package cn.carhouse.base.ui;
 
 import android.app.Application;
 
-import cn.carhouse.base.ui.loading.LoadingManager;
+
+import com.lven.loading.LoadingManager;
+
 import cn.carhouse.base.utils.ConfigUtils;
 
 /**

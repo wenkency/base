@@ -13,6 +13,7 @@ import cn.carhouse.app.R;
 import cn.carhouse.app.TestActivity;
 import cn.carhouse.app.mvptest.presenter.LoginPresenter;
 import cn.carhouse.app.mvptest.presenter.MainPresenter;
+import cn.carhouse.app.mvptest.view.ILoginView;
 import cn.carhouse.app.mvptest.view.IMainView;
 import cn.carhouse.base.ui.mvp.MvpActivity;
 import cn.carhouse.base.ui.mvp.inject.InjectPresenter;
@@ -22,7 +23,7 @@ import cn.carhouse.imageloader.ImageLoaderFactory;
 import cn.carhouse.titlebar.DefTitleBar;
 
 
-public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMainView {
+public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMainView, ILoginView {
 
 
     TextView tv;
@@ -103,5 +104,18 @@ public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMain
         tv.setText(items.toString());
     }
 
+    // =====LoginPresenter测试===========
+    public void loginTest(View view) {
+        try {
+            loginPresenter.showText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+    }
+
+    @Override
+    public void showText(String text) {
+        tv.setText(text);
+    }
 }

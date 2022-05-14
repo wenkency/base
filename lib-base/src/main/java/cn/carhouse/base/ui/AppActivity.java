@@ -5,12 +5,13 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.lven.loading.LoadState;
+import com.lven.loading.LoadingManager;
+import com.lven.loading.OnLoadingListener;
+import com.lven.loading.listener.AppLoadingListener;
+import com.lven.loading.listener.AppPagerListener;
+
 import cn.carhouse.base.R;
-import cn.carhouse.base.ui.loading.LoadState;
-import cn.carhouse.base.ui.loading.LoadingManager;
-import cn.carhouse.base.ui.loading.OnLoadingListener;
-import cn.carhouse.base.ui.loading.listener.AppLoadingListener;
-import cn.carhouse.base.ui.loading.listener.AppPagerListener;
 import cn.carhouse.titlebar.DefTitleBar;
 import cn.carhouse.titlebar.DefTitleBuilder;
 

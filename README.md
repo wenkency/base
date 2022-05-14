@@ -87,3 +87,9 @@ https://github.com/wenkency/quickalert.git
 https://github.com/wenkency/quickadapter.git
 // 图片加载使用参考
 https://github.com/wenkency/imageloader.git
+
+
+### 注解不能被混淆
+-keepclassmembers class * {
+@cn.carhouse.base.ui.mvp.inject.InjectPresenter <fields>;
+}

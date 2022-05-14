@@ -4,8 +4,7 @@ ext {
     // true  : 依赖模式
     isModule = false
     app = [
-            compileSdkVersion: 30,
-            buildToolsVersion: "30.0.3",
+            compileSdkVersion: 31,
             minSdkVersion    : 16,
             targetSdkVersion : 30,
             versionCode      : 1,

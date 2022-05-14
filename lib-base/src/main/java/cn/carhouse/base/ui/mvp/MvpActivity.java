@@ -1,6 +1,7 @@
 package cn.carhouse.base.ui.mvp;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -21,6 +22,12 @@ public abstract class MvpActivity<P extends IPresenter> extends AppActivity impl
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
         bindPresenter();
         super.onCreate(savedInstanceState);
+        onCreateMvp(savedInstanceState);
+
+    }
+
+    protected void onCreateMvp(Bundle savedInstanceState) {
+
     }
 
     /**
@@ -28,6 +35,7 @@ public abstract class MvpActivity<P extends IPresenter> extends AppActivity impl
      */
     private final void bindPresenter() {
         // 1. 绑定常用的
+        Log.e("TAG","bindPresenter");
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attach(this);

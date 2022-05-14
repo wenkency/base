@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fl_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".mvptest.MvpTestActivity"
     android:background="@android:color/white">
 
     <TextView
@@ -15,13 +17,20 @@
         android:textSize="20dp" />
 
     <Button
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:onClick="loadItem"
         android:text="加载单个条目" />
 
     <Button
-        android:layout_width="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:onClick="loginTest"
+        android:text="Login测试" />
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="right"
         android:onClick="loadList"
