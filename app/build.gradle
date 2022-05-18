@@ -6,7 +6,7 @@ android {
     compileSdkVersion this.app.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion this.app.targetSdkVersion
         versionCode this.app.versionCode
         versionName this.app.versionName
