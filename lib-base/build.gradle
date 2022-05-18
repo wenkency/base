@@ -4,28 +4,14 @@ plugins {
     id 'maven-publish'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.wenkency'
-                artifactId = 'android-base'
-                version = '3.6.0'
-            }
-        }
-    }
-}
-
 android {
     compileSdkVersion this.app.compileSdkVersion
 
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion this.app.targetSdkVersion
-        versionCode 360
-        versionName "3.6.0"
+        versionCode 361
+        versionName "3.6.1"
     }
 
     lintOptions {
@@ -50,4 +36,18 @@ dependencies {
     // compileOnly "org.greenrobot:eventbus:${this.versions.eventbus}"
     compileOnly "com.github.wenkency:loading:${this.versions.loading}"
     compileOnly "com.github.wenkency:titlebar:${this.versions.titlebar}"
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.wenkency'
+                artifactId = 'base'
+                version = '3.6.1'
+            }
+        }
+    }
 }
