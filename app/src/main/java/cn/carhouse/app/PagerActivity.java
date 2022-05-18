@@ -5,10 +5,10 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import cn.base.ui.AppActivity;
 import cn.carhouse.alert.QuickBuilder;
 import cn.carhouse.alert.QuickDialog;
 import cn.carhouse.app.mvptest.MvpTestActivity;
-import cn.base.ui.AppActivity;
 import cn.carhouse.titlebar.DefTitleBar;
 
 
@@ -43,7 +43,12 @@ public class PagerActivity extends AppActivity {
     }
 
     public void loading(View view) {
-        showLoading();
+        showLoading(true);
+    }
+
+    @Override
+    public boolean isShowContent() {
+        return true;
     }
 
     public void retry(View view) {

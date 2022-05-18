@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import org.greenrobot.eventbus.EventBus;
-
 import cn.base.ui.KeyBordUtils;
 
 public class ActivityPresenter<V extends IBaseView> {
@@ -18,7 +16,7 @@ public class ActivityPresenter<V extends IBaseView> {
         }
         this.baseView = view;
         // 绑定EventBus
-        registerEvent();
+        // registerEvent();
         // 1. 初始化数据
         baseView.initData(savedInstanceState);
         // 2. 设置ContentView
@@ -45,21 +43,21 @@ public class ActivityPresenter<V extends IBaseView> {
     /**
      * 注册EventBus
      */
-    private void registerEvent() {
+/*    private void registerEvent() {
         if (baseView.isNeedEvent()) {
             EventBus.getDefault().register(baseView);
         }
-    }
+    }*/
 
     /**
      * 解绑EventBus
      */
-    private void unregisterEvent() {
+/*    private void unregisterEvent() {
         // 事件
         if (baseView.isNeedEvent()) {
             EventBus.getDefault().unregister(baseView);
         }
-    }
+    }*/
 
     /**
      * 关闭软键盘
@@ -74,9 +72,9 @@ public class ActivityPresenter<V extends IBaseView> {
 
     public void detach() {
         // 7. 解绑View
-        if (baseView != null && baseView.isNeedEvent()) {
+/*        if (baseView != null && baseView.isNeedEvent()) {
             unregisterEvent();
-        }
+        }*/
         // 关闭软键盘
         closeKeyBord();
         baseView = null;

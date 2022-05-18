@@ -1,9 +1,6 @@
 package cn.base.ui.mvp.impl;
 
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -57,9 +54,9 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
             e.printStackTrace();
         }
         // 注册EventBus
-        if (isUseEvent()) {
+/*        if (isUseEvent()) {
             EventBus.getDefault().register(this);
-        }
+        }*/
     }
 
     @Override
@@ -71,9 +68,9 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         if (mModel != null) {
             mModel = null;
         }
-        if (isUseEvent()) {
+/*        if (isUseEvent()) {
             EventBus.getDefault().unregister(this);
-        }
+        }*/
     }
 
 
@@ -95,7 +92,7 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         return mModel;
     }
 
-    @Override
+/*    @Override
     public boolean isUseEvent() {
         return false;
     }
@@ -103,5 +100,5 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
     @Subscribe
     public void onEvent(BasePresenter basePresenter) {
 
-    }
+    }*/
 }

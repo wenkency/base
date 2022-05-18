@@ -12,9 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import cn.base.ui.core.FragmentPresenter;
 import cn.base.ui.core.IBaseView;
 
@@ -171,10 +168,10 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     /**
      * 默认注册
      */
-    @Subscribe(threadMode = ThreadMode.MAIN)
+/*    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(BaseFragment fragment) {
 
-    }
+    }*/
 
     /**
      * 关闭软键盘

@@ -208,28 +208,41 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
     /**
      * 网络失败点击重新调用
      */
-    protected void onRetryClick() {
-        showLoading();
+    public void onRetryClick() {
+        showLoading(isShowContent());
         initNet();
     }
 
+    /**
+     * 重试是否显示内容页面
+     */
+    public boolean isShowContent() {
+        return false;
+    }
 
     /**
      * 显示加载中的页面
      */
-    protected void showLoading() {
+    public void showLoading() {
+        showLoading(false);
+    }
+
+    /**
+     * 显示加载中的页面
+     */
+    public void showLoading(boolean isShowContent) {
         if (isFinishing()) {
             return;
         }
         if (mLoadingLayout != null) {
-            mLoadingLayout.showLoading();
+            mLoadingLayout.showLoading(isShowContent);
         }
     }
 
     /**
      * 显示内容页面
      */
-    protected void showContent() {
+    public void showContent() {
         if (isFinishing()) {
             return;
         }
@@ -241,7 +254,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
     /**
      * 显示空页面
      */
-    protected void showEmpty() {
+    public void showEmpty() {
         if (isFinishing()) {
             return;
         }
@@ -253,7 +266,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
     /**
      * 显示重试或者数据请求失败页面
      */
-    protected void showNetOrDataError() {
+    public void showNetOrDataError() {
         if (isFinishing()) {
             return;
         }
@@ -265,7 +278,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
     /**
      * 显示重试页面
      */
-    protected void showRetry() {
+    public void showRetry() {
         if (isFinishing()) {
             return;
         }

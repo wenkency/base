@@ -19,19 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-#### EventBus混淆
--keepattributes *Annotation*
--keepclassmembers class * {
-    @org.greenrobot.eventbus.Subscribe <methods>;
-}
--keep enum org.greenrobot.eventbus.ThreadMode { *; }
-
-# And if you use AsyncExecutor:
--keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
-    <init>(java.lang.Throwable);
-}
-
 ### 注解不能被混淆
--keepclassmembers class * {
+#-keepattributes *Annotation*
+#-keep public class cn.base.ui.mvp.inject.InjectPresenter
+-keep class * {
     @cn.base.ui.mvp.inject.InjectPresenter <fields>;
 }
+## -keep public class * extends cn.base.ui.mvp.impl.BasePresenter

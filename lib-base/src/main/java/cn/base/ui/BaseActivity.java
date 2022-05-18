@@ -8,9 +8,6 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import cn.base.ui.core.ActivityPresenter;
 import cn.base.ui.core.IBaseView;
 
@@ -65,6 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public abstract int getContentLayout();
+
     /**
      * 3.1 初始化View和标题之前
      */
@@ -124,10 +122,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     /**
      * 默认注册
      */
-    @Subscribe(threadMode = ThreadMode.MAIN)
+/*    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(BaseActivity activity) {
 
-    }
+    }*/
 
     /**
      * 关闭软键盘

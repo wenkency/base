@@ -39,5 +39,5 @@ public interface IPresenter<M extends IModel, V extends IView> {
      *
      * @return
      */
-    boolean isUseEvent();
+    // boolean isUseEvent();
 }

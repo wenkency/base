@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cn.carhouse.app">
 
     <application
@@ -13,7 +14,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name="cn.carhouse.app.PagerActivity"
-            android:hardwareAccelerated="false">
+            android:hardwareAccelerated="false"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
