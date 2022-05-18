@@ -3,6 +3,21 @@ plugins {
     // 远程仓库
     id 'maven-publish'
 }
+group = 'com.github.wenkency'
+version = '3.6.2'
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.wenkency'
+                artifactId = 'base'
+                version = '3.6.2'
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion this.app.compileSdkVersion
@@ -10,8 +25,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion this.app.targetSdkVersion
-        versionCode 361
-        versionName "3.6.1"
+        versionCode 362
+        versionName "3.6.2"
     }
 
     lintOptions {
@@ -38,16 +53,4 @@ dependencies {
     compileOnly "com.github.wenkency:titlebar:${this.versions.titlebar}"
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.wenkency'
-                artifactId = 'base'
-                version = '3.6.1'
-            }
-        }
-    }
-}
+
