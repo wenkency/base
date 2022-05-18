@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 
 android {
     compileSdkVersion this.app.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion this.app.targetSdkVersion
         versionCode this.app.versionCode
         versionName this.app.versionName
@@ -38,6 +37,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'androidx.core:core-ktx:1.7.0'
     /*导入依赖*/
     implementation "androidx.appcompat:appcompat:1.4.1"
