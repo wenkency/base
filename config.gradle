@@ -15,8 +15,4 @@ ext {
             applicationId: "cn.boardour.app"
     ]
     // 公共配置
-    versions = [
-            loading       : "1.5.0",
-            titlebar: "2.0.5",
-    ]
 }

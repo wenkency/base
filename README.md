@@ -15,11 +15,11 @@ allprojects {
 		}
 }
 // 基于标题栏、加载页面、eventbus，这三个必须依赖
-implementation 'com.github.wenkency:base:3.6.3'
+implementation 'com.github.wenkency:base:3.6.5'
 // 加载页面
 implementation 'com.github.wenkency:loading:1.5.0'
 // 标题栏
-implementation 'com.github.wenkency:titlebar:2.0.5'
+implementation 'com.github.wenkency:titlebar:2.0.8'
 
 ```
 
