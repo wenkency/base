@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import cn.base.R;
 import cn.base.ui.core.ActivityPresenter;
 import cn.base.ui.core.IBaseView;
 
@@ -120,14 +121,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
 
     /**
-     * 默认注册
-     */
-/*    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(BaseActivity activity) {
-
-    }*/
-
-    /**
      * 关闭软键盘
      */
     public void closeKeyBord() {
@@ -172,5 +165,44 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
      */
     public void startActivity(Class clazz) {
         startActivity(clazz, null);
+    }
+
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        super.startActivityForResult(intent, requestCode, options);
+        // 启动页面的动画
+        if (isStartActivityAnim()) {
+            startActivityAnim();
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        // 关闭页面的动画
+        if (isFinishActivityAnim()) {
+            finishActivityAnim();
+        }
+    }
+
+    // 是否开启启动页面的动画
+    public boolean isStartActivityAnim() {
+        return true;
+    }
+
+    // 可以复写这个页面改变启动动画
+    public void startActivityAnim() {
+        overridePendingTransition(R.anim.activity_new, R.anim.activity_out);
+    }
+
+    // 是否开启关闭页面的动画
+    public boolean isFinishActivityAnim() {
+        return true;
+    }
+
+    // 可以复写这个页面改变关闭动画
+    public void finishActivityAnim() {
+        overridePendingTransition(R.anim.activity_back, R.anim.activity_finish);
     }
 }

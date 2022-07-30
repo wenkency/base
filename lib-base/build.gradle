@@ -3,8 +3,8 @@ plugins {
     // 远程仓库
     id 'maven-publish'
 }
-def libCode = 366
-def libVersion = "3.6.6"
+def libCode = 368
+def libVersion = "3.6.8"
 group = 'com.github.wenkency'
 version = libVersion
 afterEvaluate {
@@ -43,7 +43,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     /*导入依赖*/
     compileOnly "androidx.appcompat:appcompat:1.4.2"
-    compileOnly "androidx.constraintlayout:constraintlayout:2.1.3"
     //  加载页面 、 标题栏
     compileOnly "com.github.wenkency:loading:1.5.0"
     compileOnly "com.github.wenkency:titlebar:2.0.8"

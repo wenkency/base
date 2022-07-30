@@ -67,17 +67,10 @@ public class FragmentPresenter<V extends IBaseView> {
     private void closeKeyBord() {
         if (baseView != null) {
             KeyBordUtils.closeKeyBord(baseView.getAppActivity());
-            // 优化键盘内存漏泄
-            KeyBordUtils.fixInputMethodManagerLeak(baseView.getAppActivity());
         }
     }
 
     public void detach() {
-/*        unregisterEvent();
-        // 7. 解绑View
-        if (baseView != null && baseView.isNeedEvent()) {
-            unregisterEvent();
-        }*/
         closeKeyBord();
         baseView = null;
     }

@@ -2,10 +2,7 @@ package cn.base.ui;
 
 import android.app.Application;
 
-
 import com.lven.loading.LoadingManager;
-
-import cn.base.utils.ConfigUtils;
 
 /**
  * APP页面配置类，配置一些通用的东西
@@ -18,7 +15,7 @@ public class AppConfig {
      * 这个是初始化
      */
     public static void init(Application application, boolean isDebug) {
-        ConfigUtils.init(application, isDebug);
+
     }
 
     /**

@@ -3,6 +3,7 @@ package cn.carhouse.app;
 import android.graphics.Canvas;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,8 +18,6 @@ import java.util.List;
 import cn.carhouse.adapter.XQuickAdapter;
 import cn.carhouse.adapter.XQuickViewHolder;
 import cn.base.ui.AppFragment;
-import cn.base.utils.LG;
-import cn.base.utils.TSUtils;
 
 public class TestFragment extends AppFragment {
     private RecyclerView recyclerView;
@@ -48,7 +47,7 @@ public class TestFragment extends AppFragment {
                 holder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        TSUtils.show(item);
+                        Toast.makeText(mActivity, item, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -156,7 +155,7 @@ public class TestFragment extends AppFragment {
 
     @Override
     public void fragmentVisible(boolean isVisibleToUser) {
-        LG.e("fragmentVisible  " + isVisibleToUser);
+        //LG.e("fragmentVisible  " + isVisibleToUser);
     }
 
 

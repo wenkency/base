@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lven.retrofit.callback.OnCallback;
 
@@ -17,7 +18,6 @@ import cn.carhouse.app.mvptest.view.ILoginView;
 import cn.carhouse.app.mvptest.view.IMainView;
 import cn.base.ui.mvp.MvpActivity;
 import cn.base.ui.mvp.inject.InjectPresenter;
-import cn.base.utils.TSUtils;
 import cn.carhouse.imageloader.IImageLoader;
 import cn.carhouse.imageloader.ImageLoaderFactory;
 import cn.carhouse.titlebar.DefTitleBar;
@@ -79,7 +79,8 @@ public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMain
 
             @Override
             public void onError(int code, String message) {
-                TSUtils.show(message);
+                //TSUtils.show(message);
+                Toast.makeText(MvpTestActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -17,13 +17,7 @@ public class PagerActivity extends AppActivity {
     protected void initTitle(DefTitleBar titleBar) {
         titleBar.setTitle("加载页面测试");
         // 不要返回按钮
-        titleBar.clearBackImage();
-        titleBar.setRightText("MvpTest", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(MvpTestActivity.class);
-            }
-        });
+        titleBar.setRightText("MvpTest", v -> startActivity(MvpTestActivity.class));
     }
 
     @Override
@@ -81,5 +75,10 @@ public class PagerActivity extends AppActivity {
                 showContent();
             }
         }, 300);
+    }
+
+    @Override
+    public boolean isFinishActivityAnim() {
+        return false;
     }
 }
