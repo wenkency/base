@@ -3,17 +3,18 @@ plugins {
     // 远程仓库
     id 'maven-publish'
 }
+def libCode = 366
+def libVersion = "3.6.6"
 group = 'com.github.wenkency'
-version = '3.6.4'
+version = libVersion
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             release(MavenPublication) {
                 from components.release
                 groupId = 'com.github.wenkency'
                 artifactId = 'base'
-                version = '3.6.4'
+                version = libVersion
             }
         }
     }
@@ -25,8 +26,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion this.app.targetSdkVersion
-        versionCode 365
-        versionName "3.6.5"
+        versionCode libCode
+        versionName libVersion
     }
 
     buildTypes {
