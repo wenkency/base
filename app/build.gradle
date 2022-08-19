@@ -37,7 +37,7 @@ dependencies {
     // 基础库
     // implementation "org.greenrobot:eventbus:${this.versions.eventbus}"
     implementation "com.github.wenkency:loading:1.5.0"
-    implementation "com.github.wenkency:titlebar:2.0.8"
+    implementation "com.github.wenkency:titlebar:2.1.0"
     implementation project(path: ':lib-base')
 
 

@@ -10,14 +10,14 @@ import com.lven.retrofit.callback.OnCallback;
 
 import java.util.List;
 
+import cn.base.ui.mvp.MvpActivity;
+import cn.base.ui.mvp.inject.InjectPresenter;
 import cn.carhouse.app.R;
 import cn.carhouse.app.TestActivity;
 import cn.carhouse.app.mvptest.presenter.LoginPresenter;
 import cn.carhouse.app.mvptest.presenter.MainPresenter;
 import cn.carhouse.app.mvptest.view.ILoginView;
 import cn.carhouse.app.mvptest.view.IMainView;
-import cn.base.ui.mvp.MvpActivity;
-import cn.base.ui.mvp.inject.InjectPresenter;
 import cn.carhouse.imageloader.IImageLoader;
 import cn.carhouse.imageloader.ImageLoaderFactory;
 import cn.carhouse.titlebar.DefTitleBar;
@@ -41,27 +41,19 @@ public class MvpTestActivity extends MvpActivity<MainPresenter> implements IMain
     protected void initTitle(DefTitleBar titleBar) {
         titleBar.setTitle("我是主页面");
         titleBar.setRightTextColor(Color.WHITE);
-        titleBar.setRightText("测试", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(TestActivity.class);
-            }
-        });
+        titleBar.setRightText("测试", v -> startActivity(TestActivity.class));
     }
 
     @Override
     public void initViews(View view) {
         tv = findViewById(R.id.tv);
         iv = findViewById(R.id.iv);
-        String url = "https://img.car-house.cn/Upload/activity/20191126/EMBkW2wXZ8MHjXDTR8p6PjmcGTD44xdD.gif";
+        String url = "https://lmg.jj20.com/up/allimg/tp09/21031FKU44S6-0-lp.jpg";
 
         IImageLoader imageLoader = ImageLoaderFactory.getInstance();
-        iv.post(new Runnable() {
-            @Override
-            public void run() {
-                // 正常加载图片
-                imageLoader.displayImage(iv, url, iv.getMeasuredWidth(), iv.getMaxHeight());
-            }
+        iv.post(() -> {
+            // 正常加载图片
+            imageLoader.displayImage(iv, url, iv.getMeasuredWidth(), iv.getMaxHeight());
         });
 
 

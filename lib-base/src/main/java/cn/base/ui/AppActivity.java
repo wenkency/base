@@ -11,7 +11,6 @@ import com.lven.loading.OnLoadingListener;
 import com.lven.loading.listener.AppLoadingListener;
 import com.lven.loading.listener.AppPagerListener;
 
-import cn.base.R;
 import cn.carhouse.titlebar.DefTitleBar;
 import cn.carhouse.titlebar.DefTitleBuilder;
 
@@ -30,7 +29,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
     /**
      * 返回按钮，用户可以在Application更改
      */
-    public static int IC_TITLE_BACK = R.drawable.ic_title_back;
+    public static int IC_TITLE_BACK = AppConfig.IC_TITLE_BACK;
 
     /**
      * 返回按钮图片过滤颜色
@@ -52,6 +51,14 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
      * 标题栏的颜色
      */
     public static int TITLE_CONTENT_COLOR = Color.parseColor("#008577");
+    /**
+     * 字体黑色
+     */
+    public static boolean TITLE_DARK = false;
+    /**
+     * 透明
+     */
+    public static boolean TITLE_TRANS = true;
 
     protected DefTitleBar mTitleBar;
 
@@ -71,7 +78,7 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
                     .setBackImageFilterColor(titleBackImageFilterColor())
                     .build();
             // 主题风格
-            mTitleBar.colorStyle(titleColor(), contentColor());
+            mTitleBar.colorStyle(titleColor(), contentColor(), titleDark(), titleTrans());
             // 标题字体颜色
             mTitleBar.setTitleColor(titleTextColor());
             // 右边文字的颜色
@@ -104,6 +111,14 @@ public abstract class AppActivity extends BaseActivity implements AppPagerListen
 
     protected int titleRightTextColor() {
         return TITLE_TEXT_COLOR;
+    }
+
+    protected boolean titleDark() {
+        return TITLE_DARK;
+    }
+
+    protected boolean titleTrans() {
+        return TITLE_TRANS;
     }
     // ---------标题相关设置---------
 

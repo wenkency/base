@@ -1,8 +1,8 @@
 package cn.base.ui;
 
-import android.app.Application;
-
 import com.lven.loading.LoadingManager;
+
+import cn.base.R;
 
 /**
  * APP页面配置类，配置一些通用的东西
@@ -10,13 +10,7 @@ import com.lven.loading.LoadingManager;
  */
 public class AppConfig {
 
-
-    /**
-     * 这个是初始化
-     */
-    public static void init(Application application, boolean isDebug) {
-
-    }
+    public static int IC_TITLE_BACK = R.drawable.ic_title_back;
 
     /**
      * 设置标题文本颜色
@@ -37,6 +31,20 @@ public class AppConfig {
      */
     public static void setContentBackgroundColor(int color) {
         AppActivity.CONTENT_COLOR = color;
+    }
+
+    /**
+     * 设置标题字体默认是不是黑色
+     */
+    public static void setTitleDark(boolean dark) {
+        AppActivity.TITLE_DARK = dark;
+    }
+
+    /**
+     * 设置标题是不是透明，透明 fitSystem 就是false
+     */
+    public static void setTitleTrans(boolean trans) {
+        AppActivity.TITLE_TRANS = trans;
     }
 
     /**
